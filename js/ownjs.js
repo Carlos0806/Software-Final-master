@@ -22,6 +22,8 @@ $(document).ready(function(){
 	ajax("ServiciosPHP/getVehiculoColores.php", "#selectColores");
 	ajax("ServiciosPHP/getVehiculoPrecio.php", "#selectPrecios");
 	ajax("ServiciosPHP/getVehiculoAnios.php", "#selectAnios");
+	ajax("ServiciosPHP/getAlquileresCliente.php", "#tablaAlquileres");
+	ajax("ServiciosPHP/getAlquileresClienteHist.php", "#tablaAlquileresHist");
 
 
 	$('#btn-regUser').on('click', function(event){
@@ -109,97 +111,7 @@ $(document).ready(function(){
 	}
 	})
 
-	$('#buscarA').on('click', function(event){
 
-		event.preventDefault();
-
-		var autor = $('#qAutor')[0].value;
-
-		if(autor == "" || autor == null){
-
-			ajax("ServiciosPHP/getLibro.php", "#tablaLibros");
-		}
-		else{
-
-			ajax("ServiciosPHP/getLibroAutor.php?autor="+autor, "#tablaLibros");
-		}
-	})
-
-	$('#buscarT').on('click', function(event){
-
-		event.preventDefault();
-
-		var titulo = $('#qTitulo')[0].value;
-
-		if(titulo == "" || titulo == null){
-
-			ajax("ServiciosPHP/getLibro.php", '#tablaLibros');
-		}
-
-		else{
-
-			ajax("ServiciosPHP/getLibroTitulo.php?titulo="+titulo, "#tablaLibros");
-		}
-	})
-
-	$('#buscarTotal').on('click', function(event){
-
-		event.preventDefault();
-		var autor = $('#qTotalA')[0].value;
-		var titulo = $('#qTotalT')[0].value;
-		var ISBN = $('#qTotalI')[0].value;
-
-		if(autor == "" || autor == null || titulo == "" || titulo == null || ISBN == "" || ISBN == null){
-
-			ajax("ServiciosPHP/getLibro.php", '#tablaLibros');
-		}
-
-		else{
-
-			ajax("ServiciosPHP/getLibroPorTodo.php?autor="+autor+"&titulo="+titulo+"&ISBN="+ISBN, "#tablaLibros");
-		}
-	})
-		$('#enviarC').on('click', function(event){
-		event.preventDefault();
-
-		var cedulaUsuario = $('#cedulaU')[0].value;
-		var comentario = $('#message')[0].value;
-		var tituloLibro = $('#tituloCrit')[0].value;
-		var nombreUsuario = $('#nameU')[0].value;
-
-		alert(cedulaUsuario + " " +comentario+ " "+tituloLibro+" "+nombreUsuario);
-
-
-		if(comentario == "" || tituloLibro == null || nombreUsuario == ""){
-
-			alert("Ingrese datos validos");
-		}
-		else{
-
-			ajax("ServiciosPHP/createCommet.php?comentario="+comentario+"&tituloLibro="+tituloLibro+"&nombreUsuario="+nombreUsuario+"&cedulaUsuario="+cedulaUsuario, "#respuesta");
-		}
-	})
-
-		$('#enviarCali').on('click', function(event){
-		event.preventDefault();
-
-		var cedulaUsuario = $('#cedula')[0].value;
-		var estrellas = $('td[name=estrellas]')[0].value;
-		var titulo = $('#titulo')[0].value;
-		var nombreUsuario = $('#usuario')[0].value;
-
-		
-
-
-		if(titulo == null || nombreUsuario == ""){
-
-			alert("Ingrese datos validos");
-		}
-		else{
-
-			ajax("ServiciosPHP/calificacion.php?estrellas="+estrellas+"&titulo="+titulo+"&nombreUsuario="+nombreUsuario+"&cedulaUsuario="+cedulaUsuario, "#respuesta");
-		}
-	})
 		$(".iniciarSesion").on('submit', function(event){
 
 			event.preventDefault();
@@ -290,6 +202,117 @@ $(document).ready(function(){
 					alert("Ingrese todos los campos");
 				}
 		});
+
+		$('.BtnModificarAlquiler').on('click', function(event){
+
+			alert("holi");
+			//var placaAlq = $(this).attr("value");
+			//$.get("/Software-Final-master/ServiciosPHP/getSession.php", {
+
+			//}, function(data){
+
+				//if(data == "Activo"){
+					//$('#placaMod').val(placaAlq);
+				//}
+				//else{
+					
+				//	alert("Inicie sesión para realizar el alquiler");
+				//}
+			//});
+		
+		});
+
+	$(document).on('click', '.BtnModificarAlquiler', function() { 
+		var placaAlq = $(this).attr("value");
+		var idRenta = $(this).attr("id");
+
+				$.get("/Software-Final-master/ServiciosPHP/getSession.php", {
+
+				}, function(data){
+
+					if(data == "Activo"){
+						$('#placaMod').val(placaAlq);
+						$('#idRentaMod').val(idRenta);
+						
+					}
+					else{
+						
+						alert("Debe loguearse para modificar");
+					}
+				});
+	});
+
+	$(document).on('click', '#ModificarVeh', function() { 
+			event.preventDefault();
+			var placa = $("#placaMod").val();
+			var diaPeticion = $("#diaIngresoMod").val();
+			var diaRegreso = $("#diaRegresoMod").val();
+			var usuario = $("#userMod").val();
+			var idRenta = $('#idRentaMod').val();
+
+			if(placa != "" && placa != null && diaPeticion!="" && diaPeticion != null && diaRegreso 
+					!= "" && diaRegreso !=null && usuario != "" && usuario != null && idRenta!= "" 
+					&& idRenta != null){
+
+				var confirmacion = confirm("¿Esta seguro de modificar este alquiler?");
+
+				if(confirmacion){
+					$.post("/Software-Final-master/ServiciosPHP/modificarAlquiler.php", {
+						"placa": placa,
+						"diaPeticion": diaPeticion,
+						"diaRegreso": diaRegreso,
+						"usuario": usuario,
+						"idRenta": idRenta
+
+					}, function(data){
+						alert(data);
+						ajax("ServiciosPHP/getAlquileresCliente.php", "#tablaAlquileres");
+					});
+
+				}
+				
+			}
+			else{
+					alert("Ingrese todos los campos");
+				}
+
+	});
+
+	$(document).on('click', '.BtnEliminarAlquiler', function() { 
+			event.preventDefault();
+			var idRenta = $(this).attr("value");
+
+				$.get("/Software-Final-master/ServiciosPHP/getSession.php", {
+
+				}, function(data){
+
+					if(data == "Activo"){
+						alert(idRenta);
+						$('#idRentaMod').val(idRenta);
+
+						var confirmacion = confirm("¿Esta seguro de eliminar este alquiler?");
+
+						if(confirmacion){
+							$.post("/Software-Final-master/ServiciosPHP/eliminarAlquiler.php", {
+								"idRenta": idRenta
+
+							}, function(data){
+								alert(data);
+								ajax("ServiciosPHP/getAlquileresCliente.php", "#tablaAlquileres");
+							});
+
+						}
+
+						
+					}
+					else{
+						
+						alert("Debe loguearse para eliminar");
+					}
+				});
+
+	});
+
 
 
 
