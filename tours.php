@@ -278,6 +278,7 @@ http://www.templatemo.com/tm-475-holiday
             var dateToday = new Date(); 
             $('.date-time').each(function () {
 	            $(this).datetimepicker({
+	            	format: 'YYYY/MM/DD HH:mm',
 	            	daysOfWeekDisabled: [0,6],
 	            	enabledHours: [8,9,10,11,12,13,14,15,16,17,18,19,20],
 	            	minDate: dateToday
