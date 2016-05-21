@@ -50,6 +50,12 @@ $(document).ready(function(){
 			+"&telefono="+telefono, "#respuesta");
 
 			alert("Registro realizado satisfactoriamente");
+			session_start();
+			if(isset($_SESSION["s_admin"])){
+				window.location.reload()
+			}else{
+				window.open('index.php');
+			}
 		}
 
 		else{
@@ -214,6 +220,7 @@ $(document).ready(function(){
 
 				if(data == "OK"){
 					location.href='/Software-Final-master';
+					window.location.reload()
 				}
 				else{
 					alert(data);
@@ -291,7 +298,40 @@ $(document).ready(function(){
 				}
 		});
 
+	$('#btn-regAdmin').on('click', function(event){
 
+			event.preventDefault();
+
+		var cedula = $('#registro_cedula-A')[0].value;
+		var name = $('#registro_name-A')[0].value;
+		var username = $('#registro_username-A')[0].value;
+		var direccion = $('#registro_direccion-A')[0].value;
+		var pass = $('#registro_pass-A')[0].value;
+		var pass2 = $('#registro_pass2-A')[0].value;
+		var numLicencia = $('#registro_numLicencia-A')[0].value;
+		var telefono = $('#registro_telefono-A')[0].value;
+
+		if(cedula == "" || cedula == null || name=="" || name==null || direccion=="" || direccion==null || username=="" || username==null || pass==""
+		 || pass == null || pass2 == "" || pass2 == null || numLicencia == "" || numLicencia == null || telefono == "" || telefono == null){
+
+			alert("Ingrese datos validos");
+		}
+		else{
+
+			if(pass == pass2){
+			
+			ajax("ServiciosPHP/createAdmin.php?cedula="+cedula+"&name="+name+"&direccion="+direccion+"&username="+username+"&pass="+pass+"&numLicencia="+numLicencia
+				+"&telefono="+telefono, "#respuesta");
+
+				alert("Registro realizado satisfactoriamente");
+				window.location.reload()
+			}
+
+			else{
+				alert("Las contraseñas no coinciden");
+			}
+		}
+		});
 
 });
 

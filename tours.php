@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Driving car</title>
+  <title>Vehículos</title>
 <!--
 Holiday Template
 http://www.templatemo.com/tm-475-holiday
@@ -31,7 +31,7 @@ http://www.templatemo.com/tm-475-holiday
   		<div class="container">
   			<div class="row">
   				<div class="col-lg-4 col-md-4 col-sm-3 tm-site-name-container">
-  					<a href="#" class="tm-site-name">Driving car</a>	
+  					<a href="#" class="tm-site-name">Quindi-Car </a>	
   				</div>
 
 	  			<div class="col-lg-8 col-md-8 col-sm-9">
@@ -40,14 +40,20 @@ http://www.templatemo.com/tm-475-holiday
 		            </div>
 	  				<nav class="tm-nav">
 						<ul>
-							<li><a href="index.php">Home</a></li>
+							<li><a href="index.php">Inicio</a></li>
 							<li><a href="about.php">Nosotros</a></li>
 							<li><a href="tours.php" class="active">Vehiculos</a></li>
-							<li><a href="contact.php">Registro</a></li>
+							
 							<?php
 									session_start();
 									if(isset($_SESSION["s_user"])){
-											echo "<li><a id='btnCerrarSesion' href='/Software-Final-master/ServiciosPHP/cerrarSesion.php'>Cerrar Sesión</a></li>";
+										echo "<li><a id='btnCerrarSesion' href='/Software-Final-master/ServiciosPHP/cerrarSesion.php'>Cerrar sesión</a></li>";
+									}elseif (isset($_SESSION["s_admin"])) {
+										echo "<li><a href='administrador.php'>Administar</a></li>
+										<li><a id='btnCerrarSesion' href='/Software-Final-master/ServiciosPHP/cerrarSesion.php'>Salir</a></li>
+										";
+									}else {
+										echo "<li><a href='contact.php';>Registro</a></li>";
 									}
 							?>
 						</ul>
@@ -92,7 +98,7 @@ http://www.templatemo.com/tm-475-holiday
 
 	<!-- gray bg -->	
 	<section class="container tm-home-section-1" id="more">
-		<div class="row">
+		<div class="row" >
 			<div class="col-lg-4 col-md-4 col-sm-6">
 				<!-- Nav tabs -->
 				<div class="tm-home-box-1">
@@ -146,28 +152,8 @@ http://www.templatemo.com/tm-475-holiday
 
 				</div>								
 			</div>
-
-			<div class="col-lg-4 col-md-4 col-sm-6">
-				<div class="tm-home-box-1 tm-home-box-1-2 tm-home-box-1-center">
-					<img src="img/index-01.jpg" alt="image" class="img-responsive">
-					<a href="#">
-						<div class="tm-green-gradient-bg tm-city-price-container">
-							<span>New York</span>
-							<span>$6,600</span>
-						</div>	
-					</a>			
-				</div>				
-			</div>
-			<div class="col-lg-4 col-md-4 col-sm-6">
-				<div class="tm-home-box-1 tm-home-box-1-2 tm-home-box-1-right">
-					<img src="img/index-02.jpg" alt="image" class="img-responsive">
-					<a href="#">
-						<div class="tm-red-gradient-bg tm-city-price-container">
-							<span>Paris</span>
-							<span>$4,200</span>
-						</div>	
-					</a>					
-				</div>				
+			<div style="text-align: center;">
+				<img src="img/alquiler-02.png" alt="image"  width="60%" height="60%">
 			</div>
 		</div>
 	
@@ -187,11 +173,10 @@ http://www.templatemo.com/tm-475-holiday
 
 	<!-- gray bg -->	
 	<?php
-							           		if(isset($_SESSION["s_user"])){	
-							           	?>
+	if(isset($_SESSION["s_user"])){	
+	?>
 	<section class="container tm-home-section-1" id="more">
 		<div class="row">
-
 			<div class="section-margin-top">
 				<div class="row">				
 					<div class="tm-section-header">
@@ -201,72 +186,60 @@ http://www.templatemo.com/tm-475-holiday
 					</div>
 				</div >	
 				<div class="row">				
-					 <div class="col-lg-4 col-md-4 col-sm-6">
-
+					<div class="col-lg-4 col-md-4 col-sm-6">
 				<!-- Nav tabs -->
-				<div class="tm-home-box-1">
-					<ul class="nav nav-tabs tm-white-bg" role="tablist" id="hotelCarTabs">
-					    <li role="presentation" class="active">
-					    	<a href="#alquiler" aria-controls="alquiler" role="tab" data-toggle="tab" aria-expanded="true">Alquilar Auto</a>
-					    </li>
-					</ul>
-
-					<!-- Tab panes -->
-					<div class="tab-content">
-					    <div role="tabpanel" class="tab-pane fade tm-white-bg active in" id="alquiler">
-							<div class="tm-search-box effect2">
-							
-								<form action="#" method="post" class="hotel-search-form">
-									<div class="tm-form-inner">
-										<div class="form-group">
-							            	<input id="placaAlquiler" placeholder="Placa" class="form-control" value="" required>
-							            	 
-											</input>
-							          	</div>
-							          	<div class="form-group">
-							                <div class='input-group date-time' id='datetimepicker3'>
-							                    <input id="diaPeticion" type='text' class="form-control" placeholder="Pickup Date" required />
-							                    <span class="input-group-addon">
-							                        <span class="fa fa-calendar"></span>
-							                    </span>
-							                </div>
-							            </div>
-							          	<div class="form-group">
-							                <div class='input-group date-time' id='datetimepicker4'>
-							                    <input id="diaRegreso" type='text' class="form-control" placeholder="Return Date" required/>
-							                    <span class="input-group-addon">
-							                        <span class="fa fa-calendar"></span>
-							                    </span>
-							                </div>
-							            </div>
-							            
-							           <div class="form-group">
-
-							            	<input id="userAlq" type="hidden" class="form-control" value="<?php echo $_SESSION['s_user']; ?>">
-											</input>
-							          	</div>	           
-									</div>							
-						            <div class="form-group tm-yellow-gradient-bg text-center">
-						            	<button type="submit" name="submit" id="BtnRegistrarAlquiler" class="tm-yellow-btn">Alquilar</button>
-						            </div>  
-						            
-								</form>
-								
+						<div class="tm-home-box-1">
+							<ul class="nav nav-tabs tm-white-bg" role="tablist" id="hotelCarTabs">
+							    <li role="presentation" class="active">
+							    	<a href="#alquiler" aria-controls="alquiler" role="tab" data-toggle="tab" aria-expanded="true">Alquilar Auto</a>
+							    </li>
+							</ul>
+							<!-- Tab panes -->
+							<div class="tab-content">
+							    <div role="tabpanel" class="tab-pane fade tm-white-bg active in" id="alquiler">
+									<div class="tm-search-box effect2">
+										<form action="#" method="post" class="hotel-search-form">
+											<div class="tm-form-inner">
+												<div class="form-group">
+									            	<input id="placaAlquiler" placeholder="Placa" class="form-control" value="" required> 
+									            </div>
+									          	<div class="form-group">
+									                <div class='input-group date-time' id='datetimepicker3'>
+									                    <input id="diaPeticion" type='text' class="form-control" placeholder="Pickup Date" required />
+									                    <span class="input-group-addon">
+									                        <span class="fa fa-calendar"></span>
+									                    </span>
+									                </div>
+									            </div>
+									          	<div class="form-group">
+									                <div class='input-group date-time' id='datetimepicker4'>
+									                    <input id="diaRegreso" type='text' class="form-control" placeholder="Return Date" required/>
+									                    <span class="input-group-addon">
+									                        <span class="fa fa-calendar"></span>
+									                    </span>
+									                </div>
+									            </div>
+									            <div class="form-group">
+									            	<input id="userAlq" type="hidden" class="form-control" value="<?php echo $_SESSION['s_user']; ?>">
+									          	</div>	           
+											</div>							
+								            <div class="form-group tm-yellow-gradient-bg text-center">
+								            	<button type="submit" name="submit" id="BtnRegistrarAlquiler" class="tm-yellow-btn">Alquilar</button>
+								            </div>  
+										</form>
+										
+									</div>
+							    </div>				    
 							</div>
-					    </div>				    
+						</div>								
 					</div>
-
-				</div>								
+								<div style="text-align: center;">
+				<img src="img/alquiler-01.png" alt="image"  width="60%">
 			</div>
+				</div>	
 
-				</div>		
 			</div>
-
-			
-			
-			
-		</div>
-	
+			</div>
 	</section>
 
 	<?php
@@ -274,70 +247,6 @@ http://www.templatemo.com/tm-475-holiday
 							          	?>	
 	
 	<!-- white bg -->
-	<section class="tm-white-bg section-padding-bottom">
-		<div class="container">
-			<div class="row">
-				<div class="tm-section-header section-margin-top">
-					<div class="col-lg-4 col-md-3 col-sm-3"><hr></div>
-					<div class="col-lg-4 col-md-6 col-sm-6"><h2 class="tm-section-title">Special Packages</h2></div>
-					<div class="col-lg-4 col-md-3 col-sm-3"><hr></div>	
-				</div>				
-			</div>
-			<div class="row">
-				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 col-xxs-12">
-					<div class="tm-tours-box-2">						
-						<img src="img/index-03.jpg" alt="image" class="img-responsive">
-						<div class="tm-tours-box-2-info">
-							<h3 class="margin-bottom-15">Proin Gravida Nibhvel Lorem Quis Bind</h3>
-							<img src="img/rating.png" alt="image" class="margin-bottom-5">
-							<p>28 March 2084</p>	
-						</div>						
-						<a href="#" class="tm-tours-box-2-link">Book Now</a>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 col-xxs-12">
-					<div class="tm-tours-box-2">						
-						<img src="img/index-04.jpg" alt="image" class="img-responsive">
-						<div class="tm-tours-box-2-info">
-							<h3 class="margin-bottom-15">Proin Gravida Nibhvel Lorem Quis Bind</h3>
-							<img src="img/rating.png" alt="image" class="margin-bottom-5">
-							<p>26 March 2084</p>	
-						</div>						
-						<a href="#" class="tm-tours-box-2-link">Book Now</a>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 col-xxs-12">
-					<div class="tm-tours-box-2">						
-						<img src="img/index-05.jpg" alt="image" class="img-responsive">
-						<div class="tm-tours-box-2-info">
-							<h3 class="margin-bottom-15">Proin Gravida Nibhvel Lorem Quis Bind</h3>
-							<img src="img/rating.png" alt="image" class="margin-bottom-5">
-							<p>24 March 2084</p>	
-						</div>						
-						<a href="#" class="tm-tours-box-2-link">Book Now</a>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 col-xxs-12">
-					<div class="tm-tours-box-2">						
-						<img src="img/index-06.jpg" alt="image" class="img-responsive">
-						<div class="tm-tours-box-2-info">
-							<h3 class="margin-bottom-15">Proin Gravida Nibhvel Lorem Quis Bind</h3>
-							<img src="img/rating.png" alt="image" class="margin-bottom-5">
-							<p>22 March 2084</p>	
-						</div>						
-						<a href="#" class="tm-tours-box-2-link">Book Now</a>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-12">
-					<p class="home-description">Lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris.
-					Morbi accumsaipsu m velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat.
-					</p>					
-				</div>
-			</div>	
-		</div>
-	</section>
 	<footer class="tm-black-bg">
 		<div class="container">
 			<div class="row">

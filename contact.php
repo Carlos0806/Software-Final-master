@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Vehiler - Registro</title>
+	<title>Registro</title>
 <!--
 Holiday Template
 http://www.templatemo.com/tm-475-holiday
@@ -31,7 +31,7 @@ http://www.templatemo.com/tm-475-holiday
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-4 col-md-4 col-sm-3 tm-site-name-container">
-					<a href="#" class="tm-site-name">Vehiler</a>	
+					<a href="#" class="tm-site-name">Quindi-Car</a>	
 				</div>
 				<div class="col-lg-8 col-md-8 col-sm-9">
 					<div class="mobile-menu-icon">
@@ -39,14 +39,19 @@ http://www.templatemo.com/tm-475-holiday
 					</div>
 					<nav class="tm-nav">
 						<ul>
-							<li><a href="index.php">Home</a></li>
+							<li><a href="index.php">Inicio</a></li>
 							<li><a href="about.php">Nosotros</a></li>
-							<li><a href="tours.php">Vehiculos</a></li>
-							<li><a href="contact.php" class="active">Registro</a></li>
+							<li><a href="tours.php">Vehículos</a></li>
 							<?php
 									session_start();
 									if(isset($_SESSION["s_user"])){
-											echo "<li><a id='btnCerrarSesion' href='/Software-Final-master/ServiciosPHP/cerrarSesion.php'>Cerrar Sesión</a></li>";
+										echo "<li><a id='btnCerrarSesion' href='/Software-Final-master/ServiciosPHP/cerrarSesion.php'>Cerrar sesión</a></li>";
+									}elseif (isset($_SESSION["s_admin"])) {
+										echo "<li><a href='administrador.php'>Administar</a></li>
+										<li><a id='btnCerrarSesion' href='/Software-Final-master/ServiciosPHP/cerrarSesion.php'>Salir</a></li>
+										";
+									}else {
+										echo "<li><a href='contact.php';>Registro</a></li>";
 									}
 							?>
 						</ul>
@@ -120,7 +125,14 @@ http://www.templatemo.com/tm-475-holiday
 			<div class="row">
 				<div class="tm-section-header section-margin-top">
 					<div class="col-lg-4 col-md-3 col-sm-3"><hr></div>
-					<div class="col-lg-4 col-md-6 col-sm-6"><h2 class="tm-section-title">Registrate</h2></div>
+					<?php
+						if(isset($_SESSION["s_admin"])){
+							echo "<div class='col-lg-4 col-md-6 col-sm-6'><h2 class='tm-section-title'>Registrar usuario</h2></div>";
+						}else{
+							echo "<div class='col-lg-4 col-md-6 col-sm-6'><h2 class='tm-section-title'>Registrate</h2></div>";
+						}
+					?>
+					
 					<div class="col-lg-4 col-md-3 col-sm-3"><hr></div>	
 				</div>				
 			</div>
@@ -128,14 +140,8 @@ http://www.templatemo.com/tm-475-holiday
 				<!-- contact form -->
 				<form action="#" method="post" class="tm-contact-form">
 					<div class="col-lg-6 col-md-6">
-						<div id="google-map"></div>
-						<div class="contact-social">
-							<a href="#" class="tm-social-icon tm-social-facebook"><i class="fa fa-facebook"></i></a>
-				      		<a href="#" class="tm-social-icon tm-social-dribbble"><i class="fa fa-dribbble"></i></a>
-				      		<a href="#" class="tm-social-icon tm-social-twitter"><i class="fa fa-twitter"></i></a>
-				      		<a href="#" class="tm-social-icon tm-social-instagram"><i class="fa fa-instagram"></i></a>
-				      		<a href="#" class="tm-social-icon tm-social-google-plus"><i class="fa fa-google-plus"></i></a>
-						</div>
+						<img src="img/registrar-01.png" alt="image"  width="60%" height="60%">
+						
 					</div> 
 					<div class="col-lg-6 col-md-6 tm-contact-form-input">
 						<div class="form-group">
@@ -163,20 +169,22 @@ http://www.templatemo.com/tm-475-holiday
 							<input type="text" id="registro_telefono" class="form-control" rows="6" placeholder="Telefono" />
 						</div>
 						<div class="form-group">
-							<button class="tm-submit-btn" id="btn-regUser" type="submit" name="submit">Registrarse</button> 
+							<button class="tm-submit-btn" id="btn-regUser" type="submit" name="submit">Registrar</button> 
 						</div>               
 					</div>
 				</form>
 			</div>			
 		</div>
 	</section>
-
-<section class="section-padding-bottom">
+	<?php
+		if(isset($_SESSION["s_admin"])){							
+	?>
+	<section class="section-padding-bottom">
 		<div class="container">
 			<div class="row">
 				<div class="tm-section-header section-margin-top">
 					<div class="col-lg-4 col-md-3 col-sm-3"><hr></div>
-					<div class="col-lg-4 col-md-6 col-sm-6"><h2 class="tm-section-title">Registra un vehiculo</h2></div>
+					<div class="col-lg-4 col-md-6 col-sm-6"><h2 class="tm-section-title">Registar Administrador</h2></div>
 					<div class="col-lg-4 col-md-3 col-sm-3"><hr></div>	
 				</div>				
 			</div>
@@ -184,46 +192,47 @@ http://www.templatemo.com/tm-475-holiday
 				<!-- contact form -->
 				<form action="#" method="post" class="tm-contact-form">
 					<div class="col-lg-6 col-md-6">
-						<div id="google-map"></div>
-						<div class="contact-social">
-							<a href="#" class="tm-social-icon tm-social-facebook"><i class="fa fa-facebook"></i></a>
-				      		<a href="#" class="tm-social-icon tm-social-dribbble"><i class="fa fa-dribbble"></i></a>
-				      		<a href="#" class="tm-social-icon tm-social-twitter"><i class="fa fa-twitter"></i></a>
-				      		<a href="#" class="tm-social-icon tm-social-instagram"><i class="fa fa-instagram"></i></a>
-				      		<a href="#" class="tm-social-icon tm-social-google-plus"><i class="fa fa-google-plus"></i></a>
-						</div>
+						<img src="img/registrar-02.png" alt="image"  width="60%" height="60%">
+						
 					</div> 
 					<div class="col-lg-6 col-md-6 tm-contact-form-input">
 						<div class="form-group">
-							<input type="text" id="registro_nameVeh" class="form-control" placeholder="Nombre del Vehiculo" />
+							<input type="text" id="registro_name-A" class="form-control" placeholder="Nombre" />
 						</div>
 						<div class="form-group">
-							<input type="text" id="registro_marcaVeh" class="form-control" placeholder="Marca" />
+							<input type="text" id="registro_cedula-A" class="form-control" placeholder="Cedula" />
 						</div>
 						<div class="form-group">
-							<input type="text" id="registro_modeloVeh" class="form-control" placeholder="Modelo" />
+							<input type="text" id="registro_direccion-A" class="form-control" placeholder="Dirección" />
 						</div>
 						<div class="form-group">
-							<input type="text" id="registro_colorVeh" class="form-control" rows="6" placeholder="Color" />
+							<input type="text" id="registro_username-A" class="form-control" placeholder="Nombre de usuario" />
 						</div>
 						<div class="form-group">
-							<input type="text" id="registro_imagenVeh" class="form-control" rows="6" placeholder="Imagen" />
+							<input type="password" id="registro_pass-A" class="form-control" placeholder="Contraseña" />
 						</div>
 						<div class="form-group">
-							<input type="text" id="registro_placaVeh" class="form-control" rows="6" placeholder="Placa" />
+							<input type="password" id="registro_pass2-A" class="form-control" rows="6" placeholder="Repetir contraseña" />
 						</div>
 						<div class="form-group">
-							<input type="text" id="registro_placaVeh" class="form-control" rows="6" placeholder="Kilometraje" />
+							<input type="text" id="registro_numLicencia-A" class="form-control" rows="6" placeholder="Número de licencia" />
 						</div>
 						<div class="form-group">
-							<button class="tm-submit-btn" type="submit" name="submit">Registrar</button> 
+							<input type="text" id="registro_telefono-A" class="form-control" rows="6" placeholder="Telefono" />
+						</div>
+						<div class="form-group">
+							<button class="tm-submit-btn" id="btn-regAdmin" type="submit" name="submit">Registrar</button> 
 						</div>               
 					</div>
 				</form>
 			</div>			
 		</div>
 	</section>
+	<?php
+		} else{
 
+		}							
+	?>
 
 
 

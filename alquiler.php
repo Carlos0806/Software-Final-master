@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Vehiler - Vehiculos</title>
+  <title>Alquilar</title>
 <!--
 Holiday Template
 http://www.templatemo.com/tm-475-holiday
@@ -30,7 +30,7 @@ http://www.templatemo.com/tm-475-holiday
   		<div class="container">
   			<div class="row">
   				<div class="col-lg-6 col-md-4 col-sm-3 tm-site-name-container">
-  					<a href="#" class="tm-site-name">Vehiler</a>	
+  					<a href="#" class="tm-site-name">Quindi-Car</a>	
   				</div>
 	  			<div class="col-lg-6 col-md-8 col-sm-9">
 	  				<div class="mobile-menu-icon">
@@ -38,10 +38,21 @@ http://www.templatemo.com/tm-475-holiday
 		            </div>
 	  				<nav class="tm-nav">
 						<ul>
-							<li><a href="index.html">Home</a></li>
+							<li><a href="index.html">Inicio</a></li>
 							<li><a href="about.html">Nosotros</a></li>
 							<li><a href="tours.html" class="active">Vehiculos</a></li>
-							<li><a href="contact.html">Registro</a></li>
+							<?php
+									session_start();
+									if(isset($_SESSION["s_user"])){
+										echo "<li><a id='btnCerrarSesion' href='/Software-Final-master/ServiciosPHP/cerrarSesion.php'>Cerrar sesión</a></li>";
+									}elseif (isset($_SESSION["s_admin"])) {
+										echo "<li><a href='administrador.php'>Administar</a></li>
+										<li><a id='btnCerrarSesion' href='/Software-Final-master/ServiciosPHP/cerrarSesion.php'>Salir</a></li>
+										";
+									}else {
+										echo "<li><a href='contact.php';>Registro</a></li>";
+									}
+							?>
 						</ul>
 					</nav>		
 	  			</div>				

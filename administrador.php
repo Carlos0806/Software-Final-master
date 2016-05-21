@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Inicio</title>
+  <title>Administrador</title>
 <!--
 Holiday Template
 http://www.templatemo.com/tm-475-holiday
@@ -27,18 +27,18 @@ http://www.templatemo.com/tm-475-holiday
   <body class="tm-gray-bg">
   	<!-- Header -->
   	<div class="tm-header">
-  		<div class="container">
-  			<div class="row">
-  				<div class="col-lg-4 col-md-4 col-sm-2 tm-site-name-container">
-  					<a href="#" class="tm-site-name">Quindi-Car</a>	
-  				</div>
-	  			<div class="col-lg-8 col-md-10 col-sm-10">
-	  				<div class="mobile-menu-icon">
-		              <i class="fa fa-bars"></i>
-		            </div>
-	  				<nav class="tm-nav">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4 col-md-4 col-sm-3 tm-site-name-container">
+					<a href="#" class="tm-site-name">Quindi-Car</a>	
+				</div>
+				<div class="col-lg-8 col-md-8 col-sm-9">
+					<div class="mobile-menu-icon">
+						<i class="fa fa-bars"></i>
+					</div>
+					<nav class="tm-nav">
 						<ul>
-							<li><a href="index.php" class="active">Inicio</a></li>
+							<li><a href="index.php">Inicio</a></li>
 							<li><a href="about.php">Nosotros</a></li>
 							<li><a href="tours.php">Vehiculos</a></li>
 							<?php
@@ -46,7 +46,7 @@ http://www.templatemo.com/tm-475-holiday
 									if(isset($_SESSION["s_user"])){
 										echo "<li><a id='btnCerrarSesion' href='/Software-Final-master/ServiciosPHP/cerrarSesion.php'>Cerrar sesión</a></li>";
 									}elseif (isset($_SESSION["s_admin"])) {
-										echo "<li><a href='administrador.php'>Administar</a></li>
+										echo "<li><a href='administrador.php'class='active'>Administar</a></li>
 										<li><a id='btnCerrarSesion' href='/Software-Final-master/ServiciosPHP/cerrarSesion.php'>Salir</a></li>
 										";
 									}else {
@@ -55,12 +55,10 @@ http://www.templatemo.com/tm-475-holiday
 							?>
 						</ul>
 					</nav>		
-	  			</div>				
-  			</div>
-  		</div>	  	
-  	</div>
-
-
+				</div>				
+			</div>
+		</div>	  	
+	</div>
 	
 	<!-- Banner -->
 	<section class="tm-banner">
@@ -95,123 +93,63 @@ http://www.templatemo.com/tm-475-holiday
 		</div>	
 	</section>
 
-	<!-- gray bg -->	
-	<section class="container tm-home-section-1" id="more">
+	<section class="section-padding-bottom">
 		<div class="row">
-			<div class="col-lg-4 col-md-4 col-sm-6">
-				<!-- Nav tabs -->
-					<?php 
-		  						
-
-		  						if(!isset($_SESSION["s_user"]) && !isset($_SESSION["s_admin"])){
-		  					?>
-				<div style="text-align: center;" class="tm-home-box-1">
-
-					<ul class="nav nav-tabs tm-white-bg" role="tablist" id="hotelCarTabs">
-					    <li role="presentation" class="active">
-					    	<a href="#hotel" aria-controls="hotel" role="tab" data-toggle="tab">Iniciar sesión.</a>
-					    </li>
-					    <!--
-					    <li role="presentation">
-					    	<a href="#car" aria-controls="car" role="tab" data-toggle="tab">Car Rental</a>
-					    </li>
-					    -->
-					</ul>
-
-					<!-- Tab panes -->
-							
-					<div  style="text-align: center;" class="tab-content">
-						<div role="tabpanel" class="tab-pane fade in active tm-white-bg"id="hotel">
-					    	<div class="tm-search-box effect2">
-								<form action="/Software-Final-master/ServiciosPHP/iniciarSesion.php" method="post" class="hotel-search-form iniciarSesion">
-									<div class="tm-form-inner">
-										<div class="form-group">
-												<input type="text" id="registro_name" name="registro_name" class="form-control" placeholder="Nombre" />
-							          	</div>
-							          	<div class="form-group">
-							                   <input type="password" id="registro_pass" name="registro_pass" class="form-control" placeholder="Contraseña" />
-							            </div>
-									</div>							
-						            <div style="background: white;" class="form-group tm-yellow-gradient-bg text-center">
-						            	<button type="submit" name="submit" id="btnInicioSesion" class="tm-yellow-btn" >Inicia sesión</button>
-						            </div>  
-								</form>
-							</div>
-					    </div>
-					    	<?php
-					    } else{
-
-					    }
-					    ?>
-					    				    
-					</div>
-				</div>								
+			<!-- slider -->
+			<div class="flexslider flexslider-about effect2">
+			  <ul class="slides">
+			    <li>
+			      <img src="img/administrador-1.png" alt="image" />
+			      <div class="flex-caption">
+			      	<h1 class="slider-title">INFORMES</h1>
+			      	<h2 class="slider-subtitle">Aqui podrá acceder a los informes relacionados con las rentas y con el estado del kilometraje de los vehiculos</h2>
+			      	<div class="slider-social" style="text-align: center;">
+			      		<a href="#more" class="tm-banner-link">Revisar informes</a>
+			      	</div>
+			      </div>			      
+			    </li>
+			    <li>
+			      <img src="img/administrador-2.png" alt="image" />
+			      <div class="flex-caption">
+			      	<h1 class="slider-title">REGISTRAR DEVOLUCION.</h1>
+			      	<h2 class="slider-subtitle">Aquí podra acceder a la pagina de registro de devolucion de un vehículo que un cliente habia alquilado.</h2>
+			      	<div class="slider-social" style="text-align: center;">
+			      		<a href="#more" class="tm-banner-link" >Registrar devolución</a>
+			      	</div>
+			      </div>			      
+			    </li>
+			    <li>
+			      <img src="img/administrador-3.png" alt="image" />
+			      <div class="flex-caption">
+			      	<h1 class="slider-title">ADMINISTRAR VEHÍCULOS</h1>
+			      	<h2 class="slider-subtitle">Aquí podra acceder a la pagina para realizar la inserción y modificación de los datos de los vehiculos</h2>
+			      	<div class="slider-social" style="text-align: center;">
+			      		<a href="#more" class="tm-banner-link">Insertar Vehículos</a>
+			      	</div>
+			      	<div class="slider-social" style="text-align: center;">
+			      		<a href="#more" class="tm-banner-link">Modificar Vehículos</a>
+			      	</div>
+			      </div>			      
+			    </li>
+			    <li>
+			      <img src="img/administrador-4.png" alt="image" />
+			      <div class="flex-caption">
+			      	<h1 class="slider-title">REGISTRAR</h1>
+			      	<h2 class="slider-subtitle">Aquí podra acceder a la pagina para realizar el registro de nuevos usuarios y administradores.</h2>
+			      	<div class="slider-social" style="text-align: center;">
+			      		<a href="contact.php" class="tm-banner-link">Registrar usuario</a>
+			      	</div>
+			      </div>			      
+			    </li>
+			  </ul>
 			</div>
-						<div style="text-align: center;">
-				<img src="img/index-01.png" alt="image"  width="60%" height="60%">
-			</div>
-
-			</div>
-
 		</div>
-	
-		<div class="section-margin-top">
-			<div class="row">				
-				<div class="tm-section-header">
-					<div class="col-lg-3 col-md-3 col-sm-3"><hr></div>
-					<div class="col-lg-6 col-md-6 col-sm-6"><h1 class="tm-section-title">SUCURSALES</h1></div>
-					<div class="col-lg-3 col-md-3 col-sm-3"><hr></div>	
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 col-xxs-12">
-					<div class="tm-home-box-2">						
-						<img src="img/index-03.jpg" alt="image" class="img-responsive">
-						<h1 style="text-align: center;">ARMENIA</h1>
-						<p class="tm-date">Telefono: 321-475-4123</p>
-						<p class="tm-date">Calle 10 Carrera 29</p>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 col-xxs-12">
-					<div class="tm-home-box-2">						
-					    <img src="img/index-04.jpg" alt="image" class="img-responsive">
-						<h1 style="text-align: center;">BOGOTÁ</h1>
-						<p class="tm-date">Telefono: 314-763-4235</p>
-						<p class="tm-date">Avenida Boyacá</p>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 col-xxs-12">
-					<div class="tm-home-box-2">						
-					    <img src="img/index-05.jpg" alt="image" class="img-responsive">
-						<h1 style="text-align: center;">CALI</h1>
-						<p class="tm-date">Telefono: 318-005-4387</p>
-						<p class="tm-date">Calle 14 Carrera 22</p>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 col-xxs-12">
-					<div class="tm-home-box-2 tm-home-box-2-right">						
-					    <img src="img/index-06.jpg" alt="image" class="img-responsive">
-						<h1 style="text-align: center;">MEDELLIN</h1>
-						<p class="tm-date">Telefono: 300-566-6874</p>
-						<p class="tm-date">Carrera 5 Transversal 16</p>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-12">
-					<p class="home-description">Quindi-Car, la mejor opción para rentar el vehículo de tus sueños.<a href="http://www.facebook.com/templatemo" target="_parent">contact us</a>. Credit goes to <a rel="nofollow" href="http://unsplash.com" target="_parent">Unspash</a> for images used in this template.</p>					
-				</div>
-			</div>			
-		</div>
-	</section>		
-	
-	<!-- white bg -->
-
+	</section>
 
 	<footer class="tm-black-bg">
 		<div class="container">
 			<div class="row">
-				<p class="tm-copyright-text">Copyright &copy; 2084 Your Company Name 
+				<p class="tm-copyright-text">Copyright &copy; 2016 Scrumizacion 
                 
                 | Designed by <a rel="nofollow" href="http://www.templatemo.com" target="_parent">templatemo</a></p>
 			</div>
@@ -227,7 +165,7 @@ http://www.templatemo.com/tm-475-holiday
 	<script src="js/jquery.fitvid.js"></script>
 -->
    	<script type="text/javascript" src="js/templatemo-script.js"></script>  
-   	<script type="text/javascript" src="js/ownjs.js"></script>         		<!-- Templatemo Script -->
+   	<script type="text/javascript" src="js/ownjs.js"></script>     		<!-- Templatemo Script -->
 	<script>
 		// HTML document is loaded. DOM is ready.
 		$(function() {
@@ -314,4 +252,5 @@ http://www.templatemo.com/tm-475-holiday
 
 	  	});
 	</script>
-</body>
+ </body>
+ </html>

@@ -143,10 +143,14 @@ class Usuario extends Persona{
 			$stmt->bindParam(2, $this->pass);
 
 			if($stmt->execute()){
-				return $stmt;
+				$tipo=0;
+				foreach ($stmt as $row ) {
+					$tipo .= $row ["tipoUsuario"];
+				}
+				return $tipo;
 			}
 			else{
-				return null;
+				return "malo";
 			}
 
 		}
@@ -184,6 +188,74 @@ class Usuario extends Persona{
 		}
 
 	}
+
+	function getAdministrador(){
+		try{
+			include 'lib/db_connect.php';
+
+			$query = "SELECT username FROM `RentaVehiculos`.CLIENTES WHERE tipoUsuario = 1";
+
+			$stmt = $conexion->prepare($query);
+
+			$stmt->bindParam(1, $this->username);
+
+			if($stmt->execute()){
+				$ced="";
+				foreach ($stmt as $row ) {
+					// code...
+					$ced .= $row ["cedula"];
+				}
+				return $ced;
+			}
+			else{
+				return null;
+			}
+
+		}
+		catch(PDOException $exception){
+			return "Error: ". $exception->getMessage();
+		}
+	}
+
+	function registrarAdministrador(){
+		try{
+			include 'lib/db_connect.php';
+
+			$query = "insert INTO `RentaVehiculos`.CLIENTES  SET cedula = ?, nombre = ?, licencia = ?,telefono = ?, direccionActual = ?, horasRentadas = ?, contrasenia= ?, username = ?, tipoUsuario = 1";
+
+			$stmt = $conexion->prepare($query);
+			$stmt->bindParam(1, $this->cedula);
+			$stmt->bindParam(2, $this->name);
+			$stmt->bindParam(3, $this->numLicencia);
+			$stmt->bindParam(4, $this->telefono);
+			$stmt->bindParam(5, $this->direccion);
+			$stmt->bindParam(6, $this->horasRentadas);
+			$stmt->bindParam(7, $this->pass);
+			$stmt->bindParam(8, $this->username);
+
+			echo("Contraseña: " . $this->cedula);
+			echo("Nombre: ".$this->name);
+			echo("Licencia: ".$this->numLicencia);
+			echo("Telefono: ".$this->telefono);
+			echo("Direccion: ".$this->direccion);
+			echo("HorasRentadas: ".$this->horasRentadas);
+			echo("Contra: ".$this->pass);
+			echo("Username: ".$this->username);
+
+			echo $query;
+
+			if($stmt->execute()){
+
+				return "GUARDO!";
+			}
+			else{
+				return "NO GUARDO";
+			}
+
+	} catch(PDOException $exception){
+		return "Error: ". $exception->getMessage();
+	}
+}
 
 }
 
