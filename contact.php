@@ -45,7 +45,8 @@ http://www.templatemo.com/tm-475-holiday
 							<?php
 									session_start();
 									if(isset($_SESSION["s_user"])){
-										echo "<li><a id='btnCerrarSesion' href='/Software-Final-master/ServiciosPHP/cerrarSesion.php'>Cerrar sesión</a></li>";
+										echo "<li><a href='alquileresCliente.php';>Mis alquileres</a></li>
+										<li><a id='btnCerrarSesion' href='/Software-Final-master/ServiciosPHP/cerrarSesion.php'>Salir</a></li>";
 									}elseif (isset($_SESSION["s_admin"])) {
 										echo "<li><a href='administrador.php'>Administar</a></li>
 										<li><a id='btnCerrarSesion' href='/Software-Final-master/ServiciosPHP/cerrarSesion.php'>Salir</a></li>

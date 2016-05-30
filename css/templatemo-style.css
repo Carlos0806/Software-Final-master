@@ -117,6 +117,16 @@ body { overflow-x: hidden; }
 	color: #000;
 }
 
+.tm-banner-link2 {
+	background: rgba(252, 221, 68, 1) none repeat scroll 0% 0%;
+	border: 1px solid #D2B731;
+	color: #FFF;
+	font-weight: 600;
+	display: inline-block;
+	padding: 18px 40px;
+	margin-top: 30px;
+	transition: all 0.3s ease;
+}
 
 .flexslider.flexslider-banner {
 	max-width: 100%;
@@ -306,6 +316,12 @@ hr { border-top: 1px solid #111010; }
 	text-align: center;
 	text-transform: uppercase;
 	font-size: 36px;
+	font-weight: 300;
+}
+.tm-section-subtitle2 {
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 30px;
 	font-weight: 300;
 }
 .tm-home-box-2 {
@@ -902,4 +918,5 @@ hr { border-top: 1px solid #111010; }
 
 @media screen and (max-width: 400px) {
 	.tm-section-title {	font-size: 28px; }
+	.tm-section-subtitle2 { font-size: 22px; text-transform: uppercase;}
 }

@@ -3,7 +3,14 @@
 	include_once ("lib/usuario.php");
 	include_once ("lib/Vehiculo.php");
 
-$alquiler = new Alquiler ("", "", "","", "", "");
+session_start();
+$username = $_SESSION["s_user"];
+
+$usuario = new Usuario("", "", "", "", $username, "", "");
+
+$cedula = $usuario->getUsuarioPorUsername();
+
+$alquiler = new Alquiler ("", "", "","", $cedula, "");
 
 $result = $alquiler->getAlquileres();
 

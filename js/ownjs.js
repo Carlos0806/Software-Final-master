@@ -249,6 +249,8 @@ $(document).ready(function(){
 				});
 	});
 
+
+
 	$(document).on('click', '#ModificarVeh', function() { 
 			event.preventDefault();
 			var placa = $("#placaMod").val();
@@ -355,6 +357,68 @@ $(document).ready(function(){
 			}
 		}
 	});
+
+	$('#btn-regDev').on('click', function(event){
+
+		event.preventDefault();
+		var cedula = $('#cedulaCliente')[0].value;
+
+		if(cedula == "" || cedula == null){
+			alert("Ingrese una cedula valida");
+		}
+		else{
+			ajax("ServiciosPHP/getAlquileresActuales.php?cedula="+cedula,"#tablaAlquileresSinDev");
+			}
+	});
+
+
+	$(document).on('click', '.BtnRegDevolucion', function() { 
+		var placaAlq = $(this).attr("value");
+		var idRenta = $(this).attr("id");
+		$('#placaMod').val(placaAlq);
+		$('#idRentaMod').val(idRenta);
+						
+	});
+
+	$(document).on('click', '#RegistrarDevolucion', function() { 
+			event.preventDefault();
+			var placa = $("#placaMod").val();
+			var kilometraje = $("#kilometraje").val();
+			var diaDevolucion = $("#diaDevolucion").val();
+			var observaciones= $("#observaciones").val();
+			var idRenta = $('#idRentaMod').val();
+
+			alert(placa+kilometraje+diaDevolucion+idRenta);
+
+			if(placa != "" && placa != null && kilometraje!="" && kilometraje != null && diaDevolucion
+					!= "" && diaDevolucion !=null && observaciones != "" && observaciones != null && idRenta!= "" 
+					&& idRenta != null){
+
+				var confirmacion = confirm("¿Esta seguro de registrar esta devolucion?");
+
+				if(confirmacion){
+					$.post("/Software-Final-master/ServiciosPHP/registrarDevolucion.php", {
+						"placa": placa,
+						"kilometraje": kilometraje,
+						"diaDevolucion": diaDevolucion,
+						"observaciones": observaciones,
+						"idRenta": idRenta
+
+					}, function(data){
+						alert(data);
+					});
+
+				}
+				
+			}
+			else{
+					alert("Ingrese todos los campos");
+				}
+
+	});
+
+
+
 
 });
 
