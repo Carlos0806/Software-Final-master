@@ -125,7 +125,7 @@ http://www.templatemo.com/tm-475-holiday
 						</div>
 					</div> <?php
 					$vehiculo= new Vehiculo();
-					$resultado =$vehiculo->getVehiculoPorPlaca($placa);
+					$resultado =$vehiculo->getVehiculoPorId($placa);
 					  foreach($resultado as $MostrarFila ) { 
 					echo '
 					<div class="col-lg-6 col-md-6 tm-contact-form-input">

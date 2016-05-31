@@ -1,8 +1,7 @@
 <?php
 class Vehiculo {
-	private $idVehiculo;
 	private $placa;
-	private $anio;
+	private $nombre;
 	private $precioHora;
 	private $modelo;
 	private $marca;
@@ -11,21 +10,21 @@ class Vehiculo {
 	private $nombreImagen;
 	private $kilometraje;
 	private $disponibilidad;
+
+	private $anio;
 	private $capacidadPersonas;
 	private $tipo;
 	
-	function Vehiculo($anio= 'def',$placa= 'def',$marca= 'def',$tipo= 'def',$capacidadPersonas= 'def',$precioHora= 'def',$color= 'def', $kilometraje= 'def',$disponibilidad= 'def',$modelo='def',$tipoImagen= 'def',$nombreImagen= 'def') {
+	
+	function Vehiculo($placa = 'def', $nombre = 'def', $precioHora = 'def', $modelo = 'def', 
+			$marca = 'def', $color  = 'def', $tipoImagen = 'def', $kilometraje = 'def', $nombreImagen = 'def') {
 	
 		$this->placa = $placa;
-		$this->anio = $anio;
-		$this->tipo= $tipo;
+		$this->nombre = $nombre;
 		$this->precioHora = $precioHora;
-		$this->capacidadPersonas= $capacidadPersonas;	
+		$this->modelo = $modelo;
 		$this->marca = $marca;
 		$this->color = $color;
-		$this->modelo= $modelo;
-		$this->kilometraje=$kilometraje;
-		$this->disponibilidad= $disponibilidad;
 		$this->tipoImagen = $tipoImagen;
 		$this->nombreImagen = $nombreImagen;
 		
@@ -44,8 +43,6 @@ class Vehiculo {
 	
 		return $result;
 	}
-	
-	
 	function getTotalVehiculo(){		
 		include 'ServiciosPHP/lib/db_connect.php';
 		$query = "SELECT    COUNT(`idVehiculo`) AS Total FROM    VEHICULOS";	
@@ -136,7 +133,7 @@ function registrarVehiculo($anio,$placa,$marca,$tipo,$capacidad,$precioHora,$col
 		}
 	}
 	
-	function eliminarVehiculo($idVehiculo){
+function eliminarVehiculo($idVehiculo){
 	
 		try {
 	
@@ -257,34 +254,34 @@ function registrarVehiculo($anio,$placa,$marca,$tipo,$capacidad,$precioHora,$col
 
 	}
 
-	function getVehiculoPorPlaca($idVehiculo){
+	function getVehiculoPorPlaca(){
 
-		
+		try {
 	
-			include 'ServiciosPHP/lib/db_connect.php';
+			include 'lib/db_connect.php';
 	
-			$query = "Select 
-						idVehiculo
-						, anio
-    					, placa
-						, marca
-						, tipo
-						, capacidadPersonas
-						, precioHora
-						, color
-						, kilometraje
-						, disponibilidad
-						, modelo
-						, tipoImagen
-						, nombreImagen FROM VEHICULOS WHERE idVehiculo = '".$idVehiculo."'";
-			
-			
-		$result = $conexion->query($query);
+			$query = "Select idVehiculo FROM `RentaVehiculos`.VEHICULOS WHERE placa = ?";
 	
-		return $result;
+			$stmt = $conexion->prepare($query);
+	
+			$stmt->bindParam(1, $this->placa);
+	
+			if($stmt->execute()){
+				$idVehiculo="";
+				foreach ($stmt as $row ) {
+					// code...
+					$idVehiculo .= $row ["idVehiculo"];
+				}
+				return $idVehiculo;
+			}
+			else{
+				return null;
+			}
+		}
+		catch(PDOException $exception){
+			return "Error: ". $exception->getMessage();
+		}
 	}
-	
-	
 	function getPrecioHora(){
 
 		try {
@@ -398,7 +395,9 @@ function registrarVehiculo($anio,$placa,$marca,$tipo,$capacidad,$precioHora,$col
 		}
 	}
 
-	function modificarKilometraje(){
+
+
+		function modificarKilometraje(){
 		include 'lib/db_connect.php';
 	
 			$query = "UPDATE `RentaVehiculos`.`VEHICULOS` SET `kilometraje`= ? WHERE `placa` = ?";
@@ -412,6 +411,34 @@ function registrarVehiculo($anio,$placa,$marca,$tipo,$capacidad,$precioHora,$col
 			else{
 				return "NO OK";
 			}
+	}
+
+
+	function getVehiculoPorId($idVehiculo){
+
+		
+	
+			include 'ServiciosPHP/lib/db_connect.php';
+	
+			$query = "Select 
+						idVehiculo
+						, anio
+    					, placa
+						, marca
+						, tipo
+						, capacidadPersonas
+						, precioHora
+						, color
+						, kilometraje
+						, disponibilidad
+						, modelo
+						, tipoImagen
+						, nombreImagen FROM VEHICULOS WHERE idVehiculo = '".$idVehiculo."'";
+			
+			
+		$result = $conexion->query($query);
+	
+		return $result;
 	}
 }
 
