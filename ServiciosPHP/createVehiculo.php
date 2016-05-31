@@ -14,7 +14,7 @@ include_once ("lib/Vehiculo.php");
 	$capacidad=$_POST["capacidad"];
 	$kilometraje=$_POST["kilometraje"];
 	$disponibilidad=$_POST["disponibilidad"];	
-	$rutaEnServidor='../imagenesAutos';
+	$rutaEnServidor='/var/www/html/Software-Final-master/imagenesAutos';
 	$rutaDestino=$rutaEnServidor.'/'.$nombreImagen;	
 	list($imagen, $tipoImagen)=explode(".", $nombreImagen);	
 	
