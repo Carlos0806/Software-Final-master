@@ -55,11 +55,11 @@ http://www.templatemo.com/tm-475-holiday
 							<li><a href="index.php">Inicio</a></li>
 							<li><a href="about.php">Nosotros</a></li>
 							<li><a href="tours.php" class="active">Vehiculos</a></li>
-							
 							<?php
 									session_start();
 									if(isset($_SESSION["s_user"])){
-										echo "<li><a id='btnCerrarSesion' href='/Software-Final-master/ServiciosPHP/cerrarSesion.php'>Cerrar sesión</a></li>";
+										echo "<li><a href='alquileresCliente.php';>Mis alquileres</a></li>
+										<li><a id='btnCerrarSesion' href='/Software-Final-master/ServiciosPHP/cerrarSesion.php'>Salir</a></li>";
 									}elseif (isset($_SESSION["s_admin"])) {
 										echo "<li><a href='administrador.php'>Administar</a></li>
 										<li><a id='btnCerrarSesion' href='/Software-Final-master/ServiciosPHP/cerrarSesion.php'>Salir</a></li>
@@ -111,59 +111,6 @@ http://www.templatemo.com/tm-475-holiday
 	<!-- gray bg -->	
 	<section class="container tm-home-section-1" id="more">
 		<div class="row" >
-			<div class="col-lg-4 col-md-4 col-sm-6">
-				<!-- Nav tabs -->
-				<div class="tm-home-box-1">
-					<ul class="nav nav-tabs tm-white-bg" role="tablist" id="hotelCarTabs">
-					    <li role="presentation" class="active">
-					    	<a href="#car" aria-controls="car" role="tab" data-toggle="tab">Consultar Auto</a>
-					    </li>
-				
-					</ul>
-
-					<!-- Tab panes -->
-					<div class="tab-content">
-					    <div role="tabpanel" class="tab-pane fade in active tm-white-bg" id="car">
-							<div class="tm-search-box effect2">
-								<form action="#" method="post" class="hotel-search-form">
-									<div class="tm-form-inner">
-										<div class="form-group">
-							            	 <select id="selectMarcas" class="form-control">
-							            	 
-											</select> 
-							          	</div>
-							          	<div class="form-group">
-							          		 <select id="selectColores" class="form-control">
-
-							          		 </select> 
-							          	</div>
-							          	<div class="form-group">
-							          		 <select id="selectTipos" class="form-control">
-
-							          		 </select> 
-							          	</div>
-							          	<div class="form-group">
-							          		 <select id="selectPrecios" class="form-control">
-
-							          		 </select> 
-							          	</div>
-							            <div class="form-group">
-							            	 <select id="selectAnios" class="form-control">
-
-											</select> 
-							          	</div>							           
-									</div>							
-						            <div style="background: white;"class="form-group tm-yellow-gradient-bg text-center">
-						            	<button type="submit" name="submit" class="tm-yellow-btn">Buscar</button>
-						            </div>  
-								</form>
-							</div>
-					    </div>
-					     
-					</div>
-
-				</div>								
-			</div>
 			<div style="text-align: center;">
 				<img src="img/alquiler-02.png" alt="image"  width="60%" height="60%">
 			</div>

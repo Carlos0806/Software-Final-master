@@ -114,7 +114,7 @@ http://www.templatemo.com/tm-475-holiday
 			      	<h1 class="slider-title">REGISTRAR DEVOLUCION.</h1>
 			      	<h2 class="slider-subtitle">Aquí podra acceder a la pagina de registro de devolucion de un vehículo que un cliente habia alquilado.</h2>
 			      	<div class="slider-social" style="text-align: center;">
-			      		<a href="#more" class="tm-banner-link" >Registrar devolución</a>
+			      		<a href="devoluciones.php" class="tm-banner-link" >Registrar devolución</a>
 			      	</div>
 			      </div>			      
 			    </li>

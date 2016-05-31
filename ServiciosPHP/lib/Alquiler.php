@@ -56,9 +56,16 @@ class Alquiler {
 		 try{
 			$query = "SELECT * FROM `RentaVehiculos`.AUTOS_RENTADOS JOIN `RentaVehiculos`.VEHICULOS ON  
 `RentaVehiculos`.AUTOS_RENTADOS.vehiculo = 
-`RentaVehiculos`.VEHICULOS.idVehiculo";
+`RentaVehiculos`.VEHICULOS.idVehiculo where cliente = ?";
 
-				return $result = $conexion->query($query);
+		$stmt = $conexion->prepare($query);
+		$stmt->bindParam(1, $this->usuario);
+
+		if($stmt->execute()){
+			return $stmt;
+		}else{
+			return "no existen rentas para ese cliente.";
+		}
 			}
 			catch(PDOException $exception){
 				return "Error: ". $exception->getMessage();
@@ -124,4 +131,31 @@ class Alquiler {
 			
 	}
 
+	function getAlquileresSinDevolucion(){
+
+		include 'lib/db_connect.php';
+		 
+	try{
+		$query = "SELECT AR.idRenta, concat(V.modelo,' - ',V.anio) modelo, V.placa FROM `RentaVehiculos`.AUTOS_RENTADOS AR
+JOIN `RentaVehiculos`.VEHICULOS V ON AR.vehiculo = V.idVehiculo
+ LEFT JOIN `RentaVehiculos`.RENTAS_FINALIZADAS RF ON 
+AR.idRenta = RF.autoRentado where RF.autoRentado is null and AR.cliente = ?";
+
+	#return $result = $conexion->query($query);
+		$stmt = $conexion->prepare($query);
+		$stmt->bindParam(1, $this->usuario);
+
+		if($stmt->execute()){
+			return $stmt;
+		}else{
+			return "no existen rentas para ese cliente.";
+		}
+	}catch(PDOException $exception){
+		return "Error: ". $exception->getMessage();
+	}
+
+
+	}
+
 }
+?>

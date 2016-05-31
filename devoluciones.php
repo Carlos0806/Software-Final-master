@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Alquileres</title>
+	<title>Devoluciones</title>
 <!--
 Holiday Template
 http://www.templatemo.com/tm-475-holiday
@@ -26,15 +26,18 @@ http://www.templatemo.com/tm-475-holiday
     <![endif]-->
 
 </head>
+<?php
+	session_start();
+	if(isset($_SESSION["s_admin"])){
+?>
 <body>
-
 
 	<!-- Header -->
 	<div class="tm-header">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-4 col-md-4 col-sm-3 tm-site-name-container">
-					<a href="#" class="tm-site-name">Quindi Car</a>	
+					<a href="#" class="tm-site-name">Quindi-Car</a>	
 				</div>
 				<div class="col-lg-8 col-md-8 col-sm-9">
 					<div class="mobile-menu-icon">
@@ -42,22 +45,11 @@ http://www.templatemo.com/tm-475-holiday
 					</div>
 					<nav class="tm-nav">
 						<ul>
-							<li><a href="index.php">Home</a></li>
+							<li><a href="index.php">Inicio</a></li>
 							<li><a href="about.php">Nosotros</a></li>
-							<li><a href="tours.php">Vehiculos</a></li>
-							<?php
-									session_start();
-									if(isset($_SESSION["s_user"])){
-										echo "<li><a href='alquileresCliente.php' class='active';>Mis alquileres</a></li>
-										<li><a id='btnCerrarSesion' href='/Software-Final-master/ServiciosPHP/cerrarSesion.php'>Salir</a></li>";
-									}elseif (isset($_SESSION["s_admin"])) {
-										echo "<li><a href='administrador.php'>Administar</a></li>
-										<li><a id='btnCerrarSesion' href='/Software-Final-master/ServiciosPHP/cerrarSesion.php'>Salir</a></li>
-										";
-									}else {
-										echo "<li><a href='contact.php';>Registro</a></li>";
-									}
-							?>
+							<li><a href="tours.php">Vehículos</a></li>
+							<li><a href='administrador.php'>Administar</a></li>
+							<li><a id='btnCerrarSesion' href='/Software-Final-master/ServiciosPHP/cerrarSesion.php'>Salir</a></li>			
 						</ul>
 					</nav>		
 				</div>				
@@ -96,63 +88,95 @@ http://www.templatemo.com/tm-475-holiday
 		    </li>		    
 		  </ul>
 		</div>	
-	</section>
-
-
-	<!-- Table -->
-	<section class="box">
-		<h3>Historial de alquileres</h3>
-		<br>
-			<div class="table-wrapper" id="tablaAlquileresHist"></div>
-	</section>
-								
-	<section class="box">
-		<h3>Alquileres actuales</h3>
-		<br>
-			<div class="table-wrapper" id="tablaAlquileres"></div>
-	</section>
-		<a name="modificacionAlquiler"><section class="box"></a>
-		<h3>Modificación de alquiler</h3>
-		<br>
-			<form method="get" action="#">
-				<div class="row uniform 50%">
-						<div class="12u 12u(mobilep)">
-							<input type="text" name="placaMod" id="placaMod" value="" placeholder="Nueva placa" />
-						</div>
-						<div class="12u 12u(mobilep) input-group date-time" id='datetimepicker4'>
-							<input type="text" name="query" id="diaIngresoMod" value="" placeholder="Día de petición" />
-							<span class="input-group-addon">
-								<span class="fa fa-calendar"></span>
-							 </span>
-						</div>
-						<div class="12u 12u(mobilep) input-group date-time" id='datetimepicker4'>
-							<input type="text" name="query" id="diaRegresoMod" value="" placeholder="Día de regreso" />
-							<span class="input-group-addon">
-							    <span class="fa fa-calendar"></span>
-							</span>
-						</div>
-						<input id="userMod" type="hidden" class="form-control" value="<?php echo $_SESSION['s_user']; ?>"></input>
-						<input id="idRentaMod" type="hidden" class="form-control" value=""></input>
-						<div class="12u 12u(mobilep)" align="center">
-							<input type="submit" id="ModificarVeh" value="Modificar" class="fit" />
-						</div>
-				</div>							
-			</form>
-	</section>
-
-
-
-
-
-
-
+	</section>	
 	
-<footer class="tm-black-bg">
+	<!-- white bg -->
+	
+	<section class="section-padding-bottom">
+		<div class="container">
+				<div class="tm-section-header section-margin-top">
+					<div class="col-lg-4 col-md-3 col-sm-3"><hr></div>
+					<div class='col-lg-4 col-md-6 col-sm-6'>
+						<h2 class='tm-section-title'>Registrar devolucion</h2>
+					</div>
+					<div class="col-lg-4 col-md-3 col-sm-3"><hr></div>				
+				</div>
+				<div class="row">
+					<!-- contact form -->
+					<form action="#" method="post" class="tm-contact-form">
+						<div class="col-lg-6 col-md-6">
+							<img src="img/devolucion-01.png" alt="image"  width="60%" height="60%">
+						</div> 
+						<div style="text-align: center;" class="col-lg-6 col-md-6 tm-contact-form-input">
+							<div class="form-group">
+								<h3 class='tm-section-subtitle2'>Buscar rentas del cliente</h3>
+							</div>
+							<div class="form-group">
+								<input type="text" id="cedulaCliente" class="form-control" placeholder="cedula del usuario" />
+							</div>
+							<div class="form-group">
+								<button class="tm-banner-link2" id="btn-regDev" type="submit" name="submit">Buscar alquileres vigentes</button> 
+							</div>               
+						</div>
+					</form>
+				</div>			
+		</div>
+	</section>
+
+	<section class="section-padding-bottom">
+		<div class="container">
+			
+			<div class="table-wrapper" id="tablaAlquileresSinDev" ></div>
+		</div>
+	</section>
+
+	<a name="modificacionAlquiler2">
+	<section class="section-padding-bottom">
+	</a>
+		<div class="container">
+			<div class="col-lg-6 col-md-6">
+					<img src="img/registrar-01.png" alt="image"  width="60%" height="60%">
+			</div> 
+				<div style="text-align: center;" class="col-lg-6 col-md-6 tm-contact-form-input">
+							<div class="form-group">
+								<h3 class='tm-section-subtitle2'>Registar finalizacion de renta</h3>
+							</div>
+							<div class="form-group">
+								<input type="text" name="placaMod" id="placaMod" value="" class="form-control" placeholder="Placa del vehículo" />
+							</div>
+							<div class="form-group">
+								<input type="text" name="kilometraje" id="kilometraje" value="" class="form-control" placeholder="Kilometraje actual" />
+							</div>
+							<div class="form-group">
+								<div class="12u 12u(mobilep) input-group date-time" id='datetimepicker4'>
+									<input type="text" name="query" id="diaDevolucion" value="" class="form-control" placeholder="Fecha devolución" />
+									<span class="input-group-addon">
+										<span class="fa fa-calendar"></span>
+									 </span>
+								</div>
+							</div>
+							<div class="form-group">
+								<textarea type="text" name="kilometraje" id="observaciones" value="" class="form-control" placeholder="Observación" ></textarea>
+							</div>
+							<div class="form-group">
+							<input id="idRentaMod" type="hidden" class="form-control" value="">
+							</div>
+							<div class="12u 12u(mobilep)" align="center">
+								<input type="submit" id="RegistrarDevolucion" value="Registrar devolucion" class="tm-banner-link2" />
+							</div>
+				</div>
+			</div>
+	</section>
+
+
+
+
+	<footer class="tm-black-bg">
 		<div class="container">
 			<div class="row">
-				<p class="tm-copyright-text">Copyright &copy; 2084 Your Company Name 
+				<p class="tm-copyright-text">Copyright &copy; 2016 Quindi~Car 
                 
-                | Designed by <a rel="nofollow" href="http://www.templatemo.com" target="_parent">templatemo</a></p>
+                | Diseñado por <a rel="nofollow" href="http://www.templatemo.com" target="_parent">Montaño-Tapasco-Escobar-Montealegre-Riaño</a></p>
 			</div>
 		</div>		
 	</footer>
@@ -162,8 +186,8 @@ http://www.templatemo.com/tm-475-holiday
 	<script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>	<!-- bootstrap date time picker js, http://eonasdan.github.io/bootstrap-datetimepicker/ -->
 	<script type="text/javascript" src="js/jquery.flexslider-min.js"></script>
    	<script type="text/javascript" src="js/templatemo-script.js"></script> 
-   	<script type="text/javascript" src="js/ownjs.js"></script>        		<!-- Templatemo Script -->
-	<script>
+   	<script type="text/javascript" src="js/ownjs.js"></script>     		<!-- Templatemo Script -->
+		<script>
 		// HTML document is loaded. DOM is ready.
 		$(function() {
 
@@ -203,6 +227,10 @@ http://www.templatemo.com/tm-475-holiday
 		    });
 	  	});
 	</script>
-
+	<?php
+		}else{
+			header('Location: index.php');
+		}
+	?>
  </body>
  </html>

@@ -45,7 +45,8 @@ http://www.templatemo.com/tm-475-holiday
 							<?php
 									session_start();
 									if(isset($_SESSION["s_user"])){
-										echo "<li><a id='btnCerrarSesion' href='/Software-Final-master/ServiciosPHP/cerrarSesion.php'>Cerrar sesión</a></li>";
+										echo "<li><a href='alquileresCliente.php';>Mis alquileres</a></li>
+										<li><a id='btnCerrarSesion' href='/Software-Final-master/ServiciosPHP/cerrarSesion.php'>Salir</a></li>";
 									}elseif (isset($_SESSION["s_admin"])) {
 										echo "<li><a href='administrador.php'>Administar</a></li>
 										<li><a id='btnCerrarSesion' href='/Software-Final-master/ServiciosPHP/cerrarSesion.php'>Salir</a></li>
@@ -105,7 +106,7 @@ http://www.templatemo.com/tm-475-holiday
 						<div class="contact-text">
 							<h2 class="slider-title">El mundo es tuyo</h2>
 							<h3 class="slider-subtitle">Ya sea sólo, o en familia, te mereces un transporte acorde a tu grandeza</h3>
-							<p class="slider-description">Vehiler te permite disfrutar del vehiculo que siempre has querido. Permitenos demostrarte la gran calidad de nuestro servicio, y haz de cada uno de tus viajes una experiencia inolvidable</p>
+							<p class="slider-description">Quindi~Car te permite disfrutar del vehiculo que siempre has querido. Permitenos demostrarte la gran calidad de nuestro servicio, y haz de cada uno de tus viajes una experiencia inolvidable</p>
 							<div class="slider-social">
 								<a href="#" class="tm-social-icon"><i class="fa fa-twitter"></i></a>
 								<a href="#" class="tm-social-icon"><i class="fa fa-facebook"></i></a>
