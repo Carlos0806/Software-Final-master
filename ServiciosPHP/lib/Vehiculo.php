@@ -1,7 +1,8 @@
 <?php
 class Vehiculo {
+	private $idVehiculo;
 	private $placa;
-	private $nombre;
+	private $anio;
 	private $precioHora;
 	private $modelo;
 	private $marca;
@@ -10,16 +11,21 @@ class Vehiculo {
 	private $nombreImagen;
 	private $kilometraje;
 	private $disponibilidad;
+	private $capacidadPersonas;
+	private $tipo;
 	
-	function Vehiculo($placa = 'def', $nombre = 'def', $precioHora = 'def', $modelo = 'def', 
-			$marca = 'def', $color  = 'def', $tipoImagen = 'def', $kilometraje = 'def', $nombreImagen = 'def') {
+	function Vehiculo($anio= 'def',$placa= 'def',$marca= 'def',$tipo= 'def',$capacidadPersonas= 'def',$precioHora= 'def',$color= 'def', $kilometraje= 'def',$disponibilidad= 'def',$modelo='def',$tipoImagen= 'def',$nombreImagen= 'def') {
 	
 		$this->placa = $placa;
-		$this->nombre = $nombre;
+		$this->anio = $anio;
+		$this->tipo= $tipo;
 		$this->precioHora = $precioHora;
-		$this->modelo = $modelo;
+		$this->capacidadPersonas= $capacidadPersonas;	
 		$this->marca = $marca;
 		$this->color = $color;
+		$this->modelo= $modelo;
+		$this->kilometraje=$kilometraje;
+		$this->disponibilidad= $disponibilidad;
 		$this->tipoImagen = $tipoImagen;
 		$this->nombreImagen = $nombreImagen;
 		
@@ -38,6 +44,8 @@ class Vehiculo {
 	
 		return $result;
 	}
+	
+	
 	function getTotalVehiculo(){		
 		include 'ServiciosPHP/lib/db_connect.php';
 		$query = "SELECT    COUNT(`idVehiculo`) AS Total FROM    VEHICULOS";	
@@ -67,24 +75,14 @@ class Vehiculo {
 		}
 	}
 
-	function registrarVehiculo(){
+function registrarVehiculo($anio,$placa,$marca,$tipo,$capacidad,$precioHora,$color, $kilometraje,$disponibilidad,$modelo,$tipoImagen,$imagen){
 		try{
 			include 'lib/db_connect.php';
 	
-			$query = "INSERT INTO vehiculos SET placa = ?, nombre = ?, precioHora = ?, 
-					modelo = ?, marca = ?, color = ?, imagen = ?";
-	
-			$stmt = $conexion->prepare($query);
-	
-			$stmt->bindParam(1, $this->placa);
-			$stmt->bindParam(2, $this->nombre);
-			$stmt->bindParam(3, $this->precioHora);
-			$stmt->bindParam(4, $this->modelo);
-			$stmt->bindParam(5, $this->marca);
-			$stmt->bindParam(6, $this->color);
-			$stmt->bindParam(7, $this->imagen);
+			$query = "INSERT INTO RentaVehiculos.VEHICULOS
+            (anio, placa, marca, tipo, capacidadPersonas, precioHora, color, kilometraje, disponibilidad, modelo, tipoImagen, nombreImagen) VALUES (".$anio.", '".$placa."', '".$marca."', ".$tipo.", ".$capacidad.", ".$precioHora.",  '".$color."',  ".$kilometraje.", ".$disponibilidad.",  '".$modelo."', '".$tipoImagen."', '".$imagen."')";	
+			$stmt = $conexion->prepare($query);				
 			
-	
 			if($stmt->execute()){
 				return "GUARDO!";
 			}
@@ -97,25 +95,33 @@ class Vehiculo {
 		}
 	}
 	
-	function modificarVehiculo(){
+	function modificarVehiculo($idVehiculo, $anio,$placa,$marca,$tipo,$capacidad,$precioHora,$color, $kilometraje,$disponibilidad,$modelo,$tipoImagen,$imagen){
 	
 		try{
 	
 			include 'lib/db_connect.php';
 	
-			$query = "UPDATE vehiculos  SET placa = ?, nombre = ?, precioHora = ?, 
-					modelo = ?, marca = ?, color = ?, imagen = ? WHERE placa = ?";
+			$query = "UPDATE VEHICULOS
+					SET 
+						  anio = ".$anio.",
+						  placa = '".$placa."',
+						  marca = '".$marca."',
+						  tipo = '".$tipo."',
+						  capacidadPersonas = '".$capacidad."',
+						  precioHora = '".$precioHora."',
+						  color = '".$color."',
+						  kilometraje = '".$kilometraje."',
+						  disponibilidad = '".$disponibilidad."',
+						  modelo = '".$modelo."',
+						  tipoImagen = '".$tipoImagen."',
+						  nombreImagen = '".$imagen."'
+						WHERE idVehiculo = ".$idVehiculo;
+						
+			echo $query;
 	
 			$stmt = $conexion->prepare($query);
 	
-			$stmt->bindParam(1, $this->placa);
-			$stmt->bindParam(2, $this->nombre);
-			$stmt->bindParam(3, $this->precioHora);
-			$stmt->bindParam(4, $this->modelo);
-			$stmt->bindParam(5, $this->marca);
-			$stmt->bindParam(6, $this->color);
-			$stmt->bindParam(7, $this->imagen);
-			$stmt->bindParam(8, $this->placa);
+
 
 	
 			if($stmt->execute()){
@@ -130,23 +136,24 @@ class Vehiculo {
 		}
 	}
 	
-	function eliminarVehiculo(){
+	function eliminarVehiculo($idVehiculo){
 	
 		try {
 	
 			include 'lib/db_connect.php';
 	
-			$query = "DELETE FROM vehiculos WHERE placa = ?";
-	
+			$query = "DELETE FROM VEHICULOS WHERE idVehiculo = '".$idVehiculo."'";
+			
+			
 			$stmt = $conexion->prepare($query);
 	
-			$stmt->bindParam(1, $this->placa);
+		
 	
 			if($stmt->execute()){
-				return "ELIMINO!";
+				return true;
 			}
 			else{
-				return "NO ELIMINO";
+				echo false;
 			}
 		}
 		catch(PDOException $exception){
@@ -250,25 +257,137 @@ class Vehiculo {
 
 	}
 
-	function getVehiculoPorPlaca(){
+	function getVehiculoPorPlaca($idVehiculo){
+
+		
+	
+			include 'ServiciosPHP/lib/db_connect.php';
+	
+			$query = "Select 
+						idVehiculo
+						, anio
+    					, placa
+						, marca
+						, tipo
+						, capacidadPersonas
+						, precioHora
+						, color
+						, kilometraje
+						, disponibilidad
+						, modelo
+						, tipoImagen
+						, nombreImagen FROM VEHICULOS WHERE idVehiculo = '".$idVehiculo."'";
+			
+			
+		$result = $conexion->query($query);
+	
+		return $result;
+	}
+	
+	
+	function getPrecioHora(){
 
 		try {
 	
 			include 'lib/db_connect.php';
 	
-			$query = "Select idVehiculo FROM `RentaVehiculos`.VEHICULOS WHERE placa = ?";
+			$query = "Select precioHora FROM `RentaVehiculos`.VEHICULOS WHERE placa = ?";
 	
 			$stmt = $conexion->prepare($query);
 	
 			$stmt->bindParam(1, $this->placa);
 	
 			if($stmt->execute()){
-				$idVehiculo="";
+				$precioHora="";
 				foreach ($stmt as $row ) {
 					// code...
-					$idVehiculo .= $row ["idVehiculo"];
+					$precioHora .= $row ["precioHora"];
 				}
-				return $idVehiculo;
+				return $precioHora;
+			}
+			else{
+				return null;
+			}
+		}
+		catch(PDOException $exception){
+			return "Error: ". $exception->getMessage();
+		}
+	}
+	function getModelo(){
+
+		try {
+	
+			include 'lib/db_connect.php';
+	
+			$query = "Select modelo FROM `RentaVehiculos`.VEHICULOS WHERE placa = ?";
+	
+			$stmt = $conexion->prepare($query);
+	
+			$stmt->bindParam(1, $this->placa);
+	
+			if($stmt->execute()){
+				$modelo="";
+				foreach ($stmt as $row ) {
+					// code...
+					$modelo .= $row ["modelo"];
+				}
+				return $modelo;
+			}
+			else{
+				return null;
+			}
+		}
+		catch(PDOException $exception){
+			return "Error: ". $exception->getMessage();
+		}
+	}
+	function getAnio(){
+
+		try {
+	
+			include 'lib/db_connect.php';
+	
+			$query = "Select anio FROM `RentaVehiculos`.VEHICULOS WHERE placa = ?";
+	
+			$stmt = $conexion->prepare($query);
+	
+			$stmt->bindParam(1, $this->placa);
+	
+			if($stmt->execute()){
+				$anio="";
+				foreach ($stmt as $row ) {
+					// code...
+					$anio .= $row ["anio"];
+				}
+				return $anio;
+			}
+			else{
+				return null;
+			}
+		}
+		catch(PDOException $exception){
+			return "Error: ". $exception->getMessage();
+		}
+	}
+	function getColor(){
+
+		try {
+	
+			include 'lib/db_connect.php';
+	
+			$query = "Select color FROM `RentaVehiculos`.VEHICULOS WHERE placa = ?";
+	
+			$stmt = $conexion->prepare($query);
+	
+			$stmt->bindParam(1, $this->placa);
+	
+			if($stmt->execute()){
+				$color="";
+				foreach ($stmt as $row ) {
+					// code...
+					$color .= $row ["color"];
+				}
+				return $color;
 			}
 			else{
 				return null;

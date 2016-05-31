@@ -13,23 +13,25 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Documento sin título</title>
+<title>Reporte Kilometraje</title>
 </head>
 		<body>
 <table width="100%" border="1" cellspacing="0" cellpadding="0">
   <tr>
-    <td colspan="6" bgcolor="skyblue"><CENTER><strong>REPORTE DE LA TABLA USUARIOS</strong></CENTER></td>
+    <td colspan="6" ><CENTER><strong>REPORTE POR KILOMETRAJE</strong></CENTER></td>
   </tr>
-  <tr bgcolor="red">
-    <td><strong>CEDULA</strong></td>
-    <td><strong>IDRENTA</strong></td>
+  <tr >
+    <td><strong>KILOMETRAJE</strong></td>
+    <td><strong>PLACA</strong></td>
+	<td><strong>MODELO</strong></td>
+    <td><strong>MARCA</strong></td>
+	<td><strong>TIPO</strong></td>
+    
   
   </tr>';
 	
-	// CONSULTA PARA METER A LA TABLA SOLO CON 2 VARIABLES OJO!!!!! ARREGLAR CONSULTA
-	$query = "SELECT clientes.cedula, autos_rentados.idRenta
-			FROM rentavehiculos.clientes LEFT join
-			rentavehiculos.autos_rentados on clientes.cedula = autos_rentados.cliente
+	// CONSULTA PARA METER A LA TABLA SOLO CON 2 VARIABLES
+	$query = "SELECT * from `RentaVehiculos`.VEHICULOS order by kilometraje asc
 			";
 	$result = $conexion->query ( $query );
 	// ese ciclo se le concatena por que es el resultado de la tabla
@@ -39,13 +41,24 @@
 		
 		$codigoHTML.='	
 	<tr>
-		<td>'.$row['cedula'].'</td>
-		<td>'.$row['idRenta'].'</td>
+		<td>'.$row['kilometraje'].'</td>
+		<td>'.$row['placa'].'</td>
+		<td>'.$row['modelo'].'</td>
+		<td>'.$row['marca'].'</td>
+		<td>'.$row['tipo'].'</td>
 												
 	</tr>';
 	}
 	
+	
+	
+	
 	$codigoHTML .= '
+	<div id="terms">
+		  <h5>REPORTE Quindi-Car</h5>
+		  <textarea>REPORTE PARA ESTABLECER LOS AUTOS QUE TIENEN QUE SER REVISADOS</textarea>
+		 
+		</div>
 </table>
 </body>
 </html>';
@@ -56,7 +69,7 @@
 	$dompdf->load_html ( $codigoHTML );
 	ini_set ( "memory_limit", "128M" );
 	$dompdf->render ();
-	$dompdf->stream ( "Reporte_factura.pdf" );
+	$dompdf->stream ( "Reporte_Kilometraje.pdf" );
 	
 	// el boton para mostrar el reporte debe llevar esta clase
 

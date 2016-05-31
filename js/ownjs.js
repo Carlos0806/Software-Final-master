@@ -141,20 +141,19 @@ $(document).ready(function(){
 		});
 
 
-		$('.BtnEliminar').on('click', function(event){
+		/*$('.BtnEliminar').on('click', function(event){
 
 			event.preventDefault();
 
 			var placaElim = $(this).attr("value");
-			var confirmacion = confirm("¿Está seguro de eliminar el vehiculo?");
+			var confirmacion = confirm("¿Está seguro de eliminar el vehiculo ");
 
 			if(confirmacion){
-				ajax("/Software-Final-master/ServiciosPHP/calificacion.php?placa="+placaElim, "#respuesta");
-				alert("El vehiculo con placa " + placaElim + " ha sido eliminado");
+				ajax("/Software-Final-master/ServiciosPHP/deleteVehiculo.php?p="+placaElim, "#respuesta");
+				alert("El vehiculo ha sido eliminado");
 			}
 
-		});
-
+		});*/
 
 		$('.BtnElegirAuto').on('click', function(event){
 
@@ -176,58 +175,7 @@ $(document).ready(function(){
 
 		});
 
-		$('#BtnRegistrarAlquiler').on('click', function(event){
-
-			event.preventDefault();
-
-			
-			var placa = $("#placaAlquiler").val();
-			var diaPeticion = $("#diaPeticion").val();
-			var diaRegreso = $("#diaRegreso").val();
-			var usuario = $("#userAlq").val();
-
-			if(placa != "" && placa != null && diaPeticion!="" && diaPeticion != null && diaRegreso 
-					!= "" && diaRegreso !=null && usuario != "" && usuario != null){
-
-				var confirmacion = confirm("¿Esta seguro de alquilar este vehiculo?");
-
-				if(confirmacion){
-					$.post("/Software-Final-master/ServiciosPHP/registrarAlquiler.php", {
-						"placa": placa,
-						"diaPeticion": diaPeticion,
-						"diaRegreso": diaRegreso,
-						"usuario": usuario
-
-					}, function(data){
-						alert(data);
-					});
-
-				}
-				
-			}
-			else{
-					alert("Ingrese todos los campos");
-				}
-		});
-
-		$('.BtnModificarAlquiler').on('click', function(event){
-
-			alert("holi");
-			//var placaAlq = $(this).attr("value");
-			//$.get("/Software-Final-master/ServiciosPHP/getSession.php", {
-
-			//}, function(data){
-
-				//if(data == "Activo"){
-					//$('#placaMod').val(placaAlq);
-				//}
-				//else{
-					
-				//	alert("Inicie sesión para realizar el alquiler");
-				//}
-			//});
 		
-		});
 
 	$(document).on('click', '.BtnModificarAlquiler', function() { 
 		var placaAlq = $(this).attr("value");

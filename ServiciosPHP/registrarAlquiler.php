@@ -3,6 +3,7 @@
 	include_once ("lib/Alquiler.php");
 	include_once ("lib/usuario.php");
 	include_once ("lib/Vehiculo.php");
+	
 
 	$placaVeh = $_POST["placa"];
 	$diaIngreso = $_POST["diaPeticion"];
@@ -16,14 +17,17 @@
 	if($horas>0){
 		$usuario = new Usuario("", "", "", "", $usuario, "", "");
 		$vehiculo = new Vehiculo($placaVeh, "", "", "", 
-				"", "", "", "", "");
+				"", "", "", "", "", "", "", "");
+				
 
 		$cedula = $usuario->getUsuarioPorUsername();
 		$idVehiculo = $vehiculo->getVehiculoPorPlaca();
-
+		
+		
 		$alquiler = new Alquiler($idVehiculo, $diaIngreso, $diaRegreso,$horas, $cedula);
-
+		
 		$resultado = $alquiler->registrarAlquiler();
+		
 
 		echo $resultado;
 	}

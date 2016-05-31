@@ -1,3 +1,15 @@
+<?php
+if($_GET){
+	$mensaje = $_GET["ds"];
+	
+	if($mensaje==1){
+		echo "<script type='text/javascript'> alert('Alquiler satisfactorio!')</script>";
+		
+	}else if($mensaje==2){
+		echo "<script type='text/javascript'> alert('rango de fechas incorrecto!')</script>";
+	}
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +27,7 @@ http://www.templatemo.com/tm-475-holiday
   <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet"> 
   <link href="css/flexslider.css" rel="stylesheet"> 
   <link href="css/templatemo-style.css" rel="stylesheet">
-
+	<script src="js/paginador.js"></script>
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -198,14 +210,14 @@ http://www.templatemo.com/tm-475-holiday
 							<div class="tab-content">
 							    <div role="tabpanel" class="tab-pane fade tm-white-bg active in" id="alquiler">
 									<div class="tm-search-box effect2">
-										<form action="#" method="post" class="hotel-search-form">
+										<form action="ServiciosPHP/ReporteFactura.php" method="POST" class="hotel-search-form">
 											<div class="tm-form-inner">
 												<div class="form-group">
-									            	<input id="placaAlquiler" placeholder="Placa" class="form-control" value="" required> 
+									            	<input id="placaAlquiler" name="placa" placeholder="Placa" class="form-control" value="" required> 
 									            </div>
 									          	<div class="form-group">
 									                <div class='input-group date-time' id='datetimepicker3'>
-									                    <input id="diaPeticion" type='text' class="form-control" placeholder="Pickup Date" required />
+									                    <input id="diaPeticion" name="fechaIni" type='text' class="form-control" placeholder="Pickup Date" required />
 									                    <span class="input-group-addon">
 									                        <span class="fa fa-calendar"></span>
 									                    </span>
@@ -213,14 +225,14 @@ http://www.templatemo.com/tm-475-holiday
 									            </div>
 									          	<div class="form-group">
 									                <div class='input-group date-time' id='datetimepicker4'>
-									                    <input id="diaRegreso" type='text' class="form-control" placeholder="Return Date" required/>
+									                    <input id="diaRegreso" name="fechaFin" type='text' class="form-control" placeholder="Return Date" required/>
 									                    <span class="input-group-addon">
 									                        <span class="fa fa-calendar"></span>
 									                    </span>
 									                </div>
 									            </div>
 									            <div class="form-group">
-									            	<input id="userAlq" type="hidden" class="form-control" value="<?php echo $_SESSION['s_user']; ?>">
+									            	<input id="userAlq" type="hidden" name="user" class="form-control" value="<?php echo $_SESSION['s_user']; ?>">
 									          	</div>	           
 											</div>							
 								            <div class="form-group tm-yellow-gradient-bg text-center">

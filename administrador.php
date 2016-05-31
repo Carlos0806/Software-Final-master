@@ -104,7 +104,7 @@ http://www.templatemo.com/tm-475-holiday
 			      	<h1 class="slider-title">INFORMES</h1>
 			      	<h2 class="slider-subtitle">Aqui podrá acceder a los informes relacionados con las rentas y con el estado del kilometraje de los vehiculos</h2>
 			      	<div class="slider-social" style="text-align: center;">
-			      		<a href="#more" class="tm-banner-link">Revisar informes</a>
+			      		<a href="ServiciosPHP/ReporteKilometraje.php" class="tm-banner-link">Revisar informes</a>
 			      	</div>
 			      </div>			      
 			    </li>

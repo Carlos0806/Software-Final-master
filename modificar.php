@@ -1,3 +1,19 @@
+<?php
+if($_GET){
+	$mensaje = $_GET["ds"];
+	
+	if($mensaje==1){
+		echo "<script type='text/javascript'> alert('Vehiculo Registro satisfactorio!')</script>";
+		
+	}else if($mensaje==2){
+		echo "<script type='text/javascript'> alert('Vehiculo Modificado satisfactoriamente!')</script>";
+	}else if($mensaje==3){
+		echo "<script type='text/javascript'> alert('Vehiculo Eliminado satisfactoriamente!')</script>";
+	}else if($mensaje==4){
+		echo "<script type='text/javascript'> alert('Problemas al Eliminar el vehiculo!')</script>";
+	}
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +31,7 @@ http://www.templatemo.com/tm-475-holiday
   <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet"> 
   <link href="css/flexslider.css" rel="stylesheet"> 
   <link href="css/templatemo-style.css" rel="stylesheet">
-
+<script src="js/paginadorMod.js"></script>
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -101,16 +117,83 @@ http://www.templatemo.com/tm-475-holiday
 	
 	<!-- white bg -->
 	<section class="tm-white-bg section-padding-bottom">
-		<div class="container">
-			<div class="row">
+		<div class="container" >
+			<div class="row" >
 				<div class="tm-section-header section-margin-top">
 					<div class="col-lg-4 col-md-3 col-sm-3"><hr></div>
 					<div class="col-lg-4 col-md-6 col-sm-6"><h2 class="tm-section-title">Gestión de Vehiculos</h2></div>
 					<div class="col-lg-4 col-md-3 col-sm-3"><hr></div>	
 				</div>
+                <div id="contenido" class="row">
 				<?php include 'paginadorMod.php' ?>
-				
-			</div>		
+				</div>
+			</div>
+            	
+		</div>
+	</section>
+    <section class="section-padding-bottom">
+		<div class="container">
+			<div class="row">
+				<div class="tm-section-header section-margin-top">
+					<div class="col-lg-4 col-md-3 col-sm-3"><hr></div>
+					<div class="col-lg-4 col-md-6 col-sm-6"><h2 class="tm-section-title">Registra un vehiculo</h2></div>
+					<div class="col-lg-4 col-md-3 col-sm-3"><hr></div>	
+				</div>				
+			</div>
+			<div class="row">
+				<!-- contact form -->
+				<form action="ServiciosPHP/createVehiculo.php" method="POST" class="tm-contact-form"  enctype="multipart/form-data">
+					<div class="col-lg-6 col-md-6">
+						<div id="google-map"></div>
+						<div class="contact-social">
+							<a href="#" class="tm-social-icon tm-social-facebook"><i class="fa fa-facebook"></i></a>
+				      		<a href="#" class="tm-social-icon tm-social-dribbble"><i class="fa fa-dribbble"></i></a>
+				      		<a href="#" class="tm-social-icon tm-social-twitter"><i class="fa fa-twitter"></i></a>
+				      		<a href="#" class="tm-social-icon tm-social-instagram"><i class="fa fa-instagram"></i></a>
+				      		<a href="#" class="tm-social-icon tm-social-google-plus"><i class="fa fa-google-plus"></i></a>
+						</div>
+					</div> 
+					<div class="col-lg-6 col-md-6 tm-contact-form-input">
+						<div class="form-group">
+							<input type="text" id="registro_marcaVeh" class="form-control" placeholder="Marca" name="marca"/>
+						</div>
+						<div class="form-group">
+							<input type="text" id="registro_modeloVeh" class="form-control" placeholder="Modelo" name="modelo"/>
+						</div>
+						<div class="form-group">
+							<input type="text" id="registro_tipoVeh" class="form-control" placeholder="tipo" name="tipo"/>
+						</div>						
+						<div class="form-group">
+							<input type="text" id="registro_colorVeh" class="form-control" rows="6" placeholder="Color" name="color"/>
+						</div>						
+						<div class="form-group">
+							<input type="text" id="registro_placaVeh" class="form-control" rows="6" placeholder="Placa" name="placa" />
+						</div>
+						<div class="form-group">
+							<input type="text" id="registro_kilometrajeVeh" class="form-control" rows="6" placeholder="Kilometraje" name="kilometraje"/>
+						</div>
+						<div class="form-group">
+							<input type="text" id="registro_anioVeh" class="form-control" placeholder="año" name="anio"/>
+						</div>
+						<div class="form-group">
+							<input type="text" id="registro_capacidadVeh" class="form-control" placeholder="capacidad Persona" name="capacidad"/>
+						</div>
+						<div class="form-group">
+							<input type="text" id="registro_precioVeh" class="form-control" placeholder="Precio Hora" name="precio"/>
+						</div>
+						<div class="form-group">
+							<input type="text" id="registro_disponibilidadVeh" class="form-control" placeholder="disponibilidad" name="disponibilidad"/>
+						</div>						
+						<div class="form-group">
+							<input  id="file_url" class="form-control" rows="6" type="file" name="imagen"placeholder="nombre Imagen" />
+						</div> 
+						<div class="form-group">
+							<button class="tm-submit-btn" type="submit" id="btn-regVehs" name="submit">Registrar</button> 
+						</div> 
+                                     
+					</div>
+				</form>
+			</div>			
 		</div>
 	</section>
 

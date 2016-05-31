@@ -20,7 +20,8 @@ $Resultado=$vehiculo->getVehiculo($RegistrosAEmpezar, $RegistrosAMostrar);
 
 foreach($Resultado as $MostrarFila ) {   
 
-	echo "	<div class='col-lg-6'>
+	echo "			
+		<div class='col-lg-6'>
 					<div class='tm-home-box-3'>
 						<div class='tm-home-box-3-img-container2'>
 							<img src='imagenesAutos/".$MostrarFila["nombreImagen"].".".$MostrarFila["tipoImagen"]."' alt='image' class='img-responsive2' style='float:left'>	
@@ -30,8 +31,9 @@ foreach($Resultado as $MostrarFila ) {
 					        <div class='tm-home-box-2-container2'>
 					       
 							<a href='#' class='tm-home-box-2-link'><i class='fa fa-heart tm-home-box-2-icon border-right'></i></a>
-							<a  class='tm-home-box-2-link'><span value=".$MostrarFila["placa"]." class='tm-home-box-2-description box-3 BtnEliminar'>Eliminar</span></a>
-							<a href='#' class='tm-home-box-2-link'><i class='fa fa-edit tm-home-box-2-icon border-left'></i></a>
+							<a  href='ServiciosPHP/deleteVehiculo.php?p=".$MostrarFila["idVehiculo"]."'><span class='tm-home-box-2-description box-3 r'>Eliminar</span></a>
+							
+							<a href='modificarVehiculo.php?p=".$MostrarFila["idVehiculo"]."' class='tm-home-box-2-link'><i class='fa fa-edit tm-home-box-2-icon border-left'></i></a>
 						</div>
 						</div>						
 					</div>					

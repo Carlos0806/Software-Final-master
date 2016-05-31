@@ -17,7 +17,7 @@
 	if($horas>0){
 		$usuario = new Usuario("", "", "", "", $usuario, "", "");
 		$vehiculo = new Vehiculo($placaVeh, "", "", "", 
-				"", "", "", "", "");
+				"", "", "", "", "","","","");
 
 		$cedula = $usuario->getUsuarioPorUsername();
 		$idVehiculo = $vehiculo->getVehiculoPorPlaca();
