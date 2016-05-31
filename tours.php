@@ -84,7 +84,6 @@ http://www.templatemo.com/tm-475-holiday
 			    <div class="tm-banner-inner">
 					<h1 class="tm-banner-title">Un <span class="tm-yellow-text">viaje</span> en familia</h1>
 					<p class="tm-banner-subtitle">Para tus vacaciones</p>
-					<a href="#more" class="tm-banner-link">leer mas</a>	
 				</div>
 		      <img src="img/banner-3.jpg" />
 		    </li>
@@ -92,15 +91,13 @@ http://www.templatemo.com/tm-475-holiday
 			    <div class="tm-banner-inner">
 					<h1 class="tm-banner-title">Encuentra <span class="tm-yellow-text">tu </span>vehículo</h1>
 					<p class="tm-banner-subtitle">Para seguir tu destino</p>
-					<a href="#more" class="tm-banner-link">Learn More</a>	
 				</div>
 		      <img src="img/banner-2.jpg" />
 		    </li>
 		    <li>
 			    <div class="tm-banner-inner">
 					<h1 class="tm-banner-title">Recorre<span class="tm-yellow-text">el</span> mundo</h1>
-					<p class="tm-banner-subtitle">Se el dueño de tu camino</p>
-					<a href="#more" class="tm-banner-link">Learn More</a>	
+					<p class="tm-banner-subtitle">Se el dueño de tu camino</p>	
 				</div>
 		      <img src="img/banner-1.jpg" />
 		    </li>

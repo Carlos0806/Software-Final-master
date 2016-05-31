@@ -72,23 +72,20 @@ http://www.templatemo.com/tm-475-holiday
 			    <div class="tm-banner-inner">
 					<h1 class="tm-banner-title">Encuentra <span class="tm-yellow-text">El mejor</span> Vehiculo</h1>
 					<p class="tm-banner-subtitle">Para ti</p>
-					<a href="#more" class="tm-banner-link">Conoce más</a>	
 				</div>
 				<img src="img/banner-1.jpg" alt="Image" />	
 		    </li>
 		    <li>
 			    <div class="tm-banner-inner">
 					<h1 class="tm-banner-title">Gran<span class="tm-yellow-text">Calidad</span>!</h1>
-					<p class="tm-banner-subtitle">Mejores Precios</p>
-					<a href="#more" class="tm-banner-link">Conoce más</a>	
+					<p class="tm-banner-subtitle">Mejores Precios</p>	
 				</div>
 		      <img src="img/banner-2.jpg" alt="Image" />
 		    </li>
 		    <li>
 			    <div class="tm-banner-inner">
 					<h1 class="tm-banner-title">Disfruta <span class="tm-yellow-text">Las Ruedas</span> En tu vida</h1>
-					<p class="tm-banner-subtitle">Alquila Tu Vehiculo</p>
-					<a href="#more" class="tm-banner-link">Conoce más</a>	
+					<p class="tm-banner-subtitle">Alquila Tu Vehiculo</p>	
 				</div>
 		      <img src="img/banner-3.jpg" alt="Image" />
 		    </li>

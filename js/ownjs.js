@@ -336,8 +336,6 @@ $(document).ready(function(){
 			var observaciones= $("#observaciones").val();
 			var idRenta = $('#idRentaMod').val();
 
-			alert(placa+kilometraje+diaDevolucion+idRenta);
-
 			if(placa != "" && placa != null && kilometraje!="" && kilometraje != null && diaDevolucion
 					!= "" && diaDevolucion !=null && observaciones != "" && observaciones != null && idRenta!= "" 
 					&& idRenta != null){
@@ -364,6 +362,8 @@ $(document).ready(function(){
 				}
 
 	});
+
+
 
 
 

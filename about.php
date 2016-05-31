@@ -97,7 +97,7 @@ http://www.templatemo.com/tm-475-holiday
 	</section>
 
 	<!-- gray bg -->	
-	<section class="container tm-home-section-1" id="more">
+	<section class="container tm-home-section-1" id="more" style="text-align: center;">
 		<div class="row">
 			<!-- slider -->
 			<div class="flexslider flexslider-about effect2">

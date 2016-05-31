@@ -69,15 +69,14 @@ http://www.templatemo.com/tm-475-holiday
 			    <div class="tm-banner-inner">
 					<h1 class="tm-banner-title">Encuentra <span class="tm-yellow-text">El mejor</span> Vehiculo</h1>
 					<p class="tm-banner-subtitle">Para ti</p>
-					<a href="#more" class="tm-banner-link">Conoce más</a>	
+					
 				</div>
 				<img src="img/banner-1.jpg" alt="Image" />	
 		    </li>
 		    <li>
 			    <div class="tm-banner-inner">
 					<h1 class="tm-banner-title">Gran<span class="tm-yellow-text">Calidad</span>!</h1>
-					<p class="tm-banner-subtitle">Mejores Precios</p>
-					<a href="#more" class="tm-banner-link">Conoce más</a>	
+					<p class="tm-banner-subtitle">Mejores Precios</p>	
 				</div>
 		      <img src="img/banner-2.jpg" alt="Image" />
 		    </li>
@@ -85,7 +84,6 @@ http://www.templatemo.com/tm-475-holiday
 			    <div class="tm-banner-inner">
 					<h1 class="tm-banner-title">Disfruta <span class="tm-yellow-text">Las Ruedas</span> En tu vida</h1>
 					<p class="tm-banner-subtitle">Alquila Tu Vehiculo</p>
-					<a href="#more" class="tm-banner-link">Conoce más</a>	
 				</div>
 		      <img src="img/banner-3.jpg" alt="Image" />
 		    </li>
@@ -103,8 +101,30 @@ http://www.templatemo.com/tm-475-holiday
 			      <div class="flex-caption">
 			      	<h1 class="slider-title">INFORMES</h1>
 			      	<h2 class="slider-subtitle">Aqui podrá acceder a los informes relacionados con las rentas y con el estado del kilometraje de los vehiculos</h2>
+			      	<br>
+			      	<div class="form-group">
+						<div class="12u 12u(mobilep) input-group date-time" id='datetimepicker4'>
+							<input type="text" name="fecha1" id="fecha1" value="" class="form-control" placeholder="Fecha inicio" />
+							<span class="input-group-addon">
+								<span class="fa fa-calendar"></span>
+							</span>
+						</div>
+					</div>
+					<br>
+			      	<div class="form-group">
+						<div class="12u 12u(mobilep) input-group date-time" id='datetimepicker4'>
+							<input type="text" name="fecha2" id="fecha2" value="" class="form-control" placeholder="Fecha fin" />
+							<span class="input-group-addon">
+								<span class="fa fa-calendar"></span>
+							</span>
+						</div>
+					</div>
+					<div class="slider-social" style="text-align: center;">
+			      		<a href="ServiciosPHP/ReporteAlquileres.php" class="tm-banner-link">Informe rentas</a>
+			      	</div>
+
 			      	<div class="slider-social" style="text-align: center;">
-			      		<a href="ServiciosPHP/ReporteKilometraje.php" class="tm-banner-link">Revisar informes</a>
+			      		<a href="ServiciosPHP/ReporteKilometraje.php" class="tm-banner-link">Informe kilomentrajes</a>
 			      	</div>
 			      </div>			      
 			    </li>
@@ -124,10 +144,10 @@ http://www.templatemo.com/tm-475-holiday
 			      	<h1 class="slider-title">ADMINISTRAR VEHÍCULOS</h1>
 			      	<h2 class="slider-subtitle">Aquí podra acceder a la pagina para realizar la inserción y modificación de los datos de los vehiculos</h2>
 			      	<div class="slider-social" style="text-align: center;">
-			      		<a href="#more" class="tm-banner-link">Insertar Vehículos</a>
+			      		<a href="modificar.php#registrarVehiculo" class="tm-banner-link">Insertar Vehículos</a>
 			      	</div>
 			      	<div class="slider-social" style="text-align: center;">
-			      		<a href="#more" class="tm-banner-link">Modificar Vehículos</a>
+			      		<a href="modificar.php" class="tm-banner-link">Modificar Vehículos</a>
 			      	</div>
 			      </div>			      
 			    </li>

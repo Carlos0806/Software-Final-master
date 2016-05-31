@@ -1,6 +1,7 @@
 <?php
 
 	include_once ("lib/Devolucion.php");
+	include_once ("lib/Vehiculo.php");
 
 	$placa = $_POST["placa"];
 	$kilometraje = $_POST["kilometraje"];
@@ -12,6 +13,11 @@
 
 	$resultado = $devolucion->registrarDevolucion();
 
+	$vehiculo = new Vehiculo('',$placa,'','','','','',$kilometraje,'','','','');
+
+	$res = $vehiculo->modificarKilometraje();
+
+	echo $res;
 	echo $resultado;
 
 ?>

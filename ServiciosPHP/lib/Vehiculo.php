@@ -397,6 +397,22 @@ function registrarVehiculo($anio,$placa,$marca,$tipo,$capacidad,$precioHora,$col
 			return "Error: ". $exception->getMessage();
 		}
 	}
+
+	function modificarKilometraje(){
+		include 'lib/db_connect.php';
+	
+			$query = "UPDATE `RentaVehiculos`.`VEHICULOS` SET `kilometraje`= ? WHERE `placa` = ?";
+			$stmt = $conexion->prepare($query);
+			$stmt->bindParam(1, $this->kilometraje);
+			$stmt->bindParam(2, $this->placa);
+
+			if($stmt->execute()){
+				return "OK";
+			}
+			else{
+				return "NO OK";
+			}
+	}
 }
 
 ?>

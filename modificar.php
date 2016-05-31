@@ -59,14 +59,14 @@ http://www.templatemo.com/tm-475-holiday
 							<li><a href="index.php">Inicio</a></li>
 							<li><a href="about.php">Nosotros</a></li>
 							<li><a href="tours.php" class="active">Vehiculos</a></li>
-							<li><a href="contact.php">Registro</a></li>
 							<?php
 									session_start();
 									if(isset($_SESSION["s_user"])){
-										echo "<li><a id='btnCerrarSesion' href='/Software-Final-master/ServiciosPHP/cerrarSesion.php'>Salir a</a></li>";
+										echo "<li><a href='alquileresCliente.php';>Mis alquileres</a></li>
+										<li><a id='btnCerrarSesion' href='/Software-Final-master/ServiciosPHP/cerrarSesion.php'>Salir</a></li>";
 									}elseif (isset($_SESSION["s_admin"])) {
 										echo "<li><a href='administrador.php'>Administar</a></li>
-										<li><a id='btnCerrarSesion' href='/Software-Final-master/ServiciosPHP/cerrarSesion.php'>Cerrar sesión</a></li>
+										<li><a id='btnCerrarSesion' href='/Software-Final-master/ServiciosPHP/cerrarSesion.php'>Salir</a></li>
 										";
 									}else {
 										echo "<li><a href='contact.php';>Registro</a></li>";
@@ -90,7 +90,6 @@ http://www.templatemo.com/tm-475-holiday
 			    <div class="tm-banner-inner">
 					<h1 class="tm-banner-title">Encuentra <span class="tm-yellow-text">El mejor</span> Vehiculo</h1>
 					<p class="tm-banner-subtitle">Para ti</p>
-					<a href="#more" class="tm-banner-link">Conoce más</a>	
 				</div>
 				<img src="img/banner-1.jpg" alt="Image" />	
 		    </li>
@@ -98,7 +97,6 @@ http://www.templatemo.com/tm-475-holiday
 			    <div class="tm-banner-inner">
 					<h1 class="tm-banner-title">Gran<span class="tm-yellow-text">Calidad</span>!</h1>
 					<p class="tm-banner-subtitle">Mejores Precios</p>
-					<a href="#more" class="tm-banner-link">Conoce más</a>	
 				</div>
 		      <img src="img/banner-2.jpg" alt="Image" />
 		    </li>
@@ -106,7 +104,6 @@ http://www.templatemo.com/tm-475-holiday
 			    <div class="tm-banner-inner">
 					<h1 class="tm-banner-title">Disfruta <span class="tm-yellow-text">Las Ruedas</span> En tu vida</h1>
 					<p class="tm-banner-subtitle">Alquila Tu Vehiculo</p>
-					<a href="#more" class="tm-banner-link">Conoce más</a>	
 				</div>
 		      <img src="img/banner-3.jpg" alt="Image" />
 		    </li>
@@ -128,30 +125,26 @@ http://www.templatemo.com/tm-475-holiday
 				<?php include 'paginadorMod.php' ?>
 				</div>
 			</div>
-            	
 		</div>
 	</section>
+
+	<section id="registrarVehiculo"></section>
+
     <section class="section-padding-bottom">
 		<div class="container">
 			<div class="row">
 				<div class="tm-section-header section-margin-top">
 					<div class="col-lg-4 col-md-3 col-sm-3"><hr></div>
-					<div class="col-lg-4 col-md-6 col-sm-6"><h2 class="tm-section-title">Registra un vehiculo</h2></div>
+					<div class="col-lg-4 col-md-6 col-sm-6"><h2 class="tm-section-title">Registrar vehículo</h2></div>
 					<div class="col-lg-4 col-md-3 col-sm-3"><hr></div>	
 				</div>				
 			</div>
 			<div class="row">
 				<!-- contact form -->
 				<form action="ServiciosPHP/createVehiculo.php" method="POST" class="tm-contact-form"  enctype="multipart/form-data">
-					<div class="col-lg-6 col-md-6">
-						<div id="google-map"></div>
-						<div class="contact-social">
-							<a href="#" class="tm-social-icon tm-social-facebook"><i class="fa fa-facebook"></i></a>
-				      		<a href="#" class="tm-social-icon tm-social-dribbble"><i class="fa fa-dribbble"></i></a>
-				      		<a href="#" class="tm-social-icon tm-social-twitter"><i class="fa fa-twitter"></i></a>
-				      		<a href="#" class="tm-social-icon tm-social-instagram"><i class="fa fa-instagram"></i></a>
-				      		<a href="#" class="tm-social-icon tm-social-google-plus"><i class="fa fa-google-plus"></i></a>
-						</div>
+					<div class="col-lg-6 col-md-6" style="text-align: center;">
+						<img src="img/registroAuto.png" alt="image"  width="60%" height="60%">
+						
 					</div> 
 					<div class="col-lg-6 col-md-6 tm-contact-form-input">
 						<div class="form-group">

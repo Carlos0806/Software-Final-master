@@ -51,14 +51,14 @@ http://www.templatemo.com/tm-475-holiday
 							<li><a href="index.php">Inicio</a></li>
 							<li><a href="about.php">Nosotros</a></li>
 							<li><a href="tours.php" class="active">Vehiculos</a></li>
-							<li><a href="contact.php">Registro</a></li>
 							<?php
 									session_start();
 									if(isset($_SESSION["s_user"])){
-										echo "<li><a id='btnCerrarSesion' href='/Software-Final-master/ServiciosPHP/cerrarSesion.php'>Salir a</a></li>";
+										echo "<li><a href='alquileresCliente.php';>Mis alquileres</a></li>
+										<li><a id='btnCerrarSesion' href='/Software-Final-master/ServiciosPHP/cerrarSesion.php'>Salir</a></li>";
 									}elseif (isset($_SESSION["s_admin"])) {
 										echo "<li><a href='administrador.php'>Administar</a></li>
-										<li><a id='btnCerrarSesion' href='/Software-Final-master/ServiciosPHP/cerrarSesion.php'>Cerrar sesión</a></li>
+										<li><a id='btnCerrarSesion' href='/Software-Final-master/ServiciosPHP/cerrarSesion.php'>Salir</a></li>
 										";
 									}else {
 										echo "<li><a href='contact.php';>Registro</a></li>";
@@ -82,15 +82,13 @@ http://www.templatemo.com/tm-475-holiday
 			    <div class="tm-banner-inner">
 					<h1 class="tm-banner-title">Encuentra <span class="tm-yellow-text">El mejor</span> Vehiculo</h1>
 					<p class="tm-banner-subtitle">Para ti</p>
-					<a href="#more" class="tm-banner-link">Conoce más</a>	
 				</div>
 				<img src="img/banner-1.jpg" alt="Image" />	
 		    </li>
 		    <li>
 			    <div class="tm-banner-inner">
 					<h1 class="tm-banner-title">Gran<span class="tm-yellow-text">Calidad</span>!</h1>
-					<p class="tm-banner-subtitle">Mejores Precios</p>
-					<a href="#more" class="tm-banner-link">Conoce más</a>	
+					<p class="tm-banner-subtitle">Mejores Precios</p>	
 				</div>
 		      <img src="img/banner-2.jpg" alt="Image" />
 		    </li>
@@ -98,7 +96,6 @@ http://www.templatemo.com/tm-475-holiday
 			    <div class="tm-banner-inner">
 					<h1 class="tm-banner-title">Disfruta <span class="tm-yellow-text">Las Ruedas</span> En tu vida</h1>
 					<p class="tm-banner-subtitle">Alquila Tu Vehiculo</p>
-					<a href="#more" class="tm-banner-link">Conoce más</a>	
 				</div>
 		      <img src="img/banner-3.jpg" alt="Image" />
 		    </li>
