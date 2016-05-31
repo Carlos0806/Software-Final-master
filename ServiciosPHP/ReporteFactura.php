@@ -36,7 +36,11 @@
 		$anio = $vehiculo->getAnio();
 		
 		$valor = $precioHora*$horas;
-		$descuento=0;
+		$descuento =0;
+		if($horas>=100){
+			$descuento=$valor*0.2;
+		}
+		
 		$valorTotal=$valor-$descuento;
 		
 		
